@@ -12,6 +12,12 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
 
+    <!-- Load icon library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
     <!-- Latest compiled and minified JavaScript -->
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -20,6 +26,130 @@
   </head>
 
   <body>
+    <!-- Nav bar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <h2>NavBar stuff here</h2>
+      </div>
+    </nav>
+
+    <!-- main heading -->
+
+    <div class="container">
+      <div class="row">
+        <div class="heading">
+          <h1>Main Heading</h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- search parameters -->
+
+    <div class="container">
+      <div class="row">
+        <div class="form-group">
+          <label for="sel1">Select list:</label>
+          <select class="form-control" id="sel1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+
+          <!-- Alternative Search Bar -->
+
+          <form class="example" action="action_page.php">
+            <input type="text" placeholder="Search.." name="search" />
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- scrolling through images -->
+
+    <div class="container">
+      <div class="row">
+        <div class="carouselImage fullScreen">
+          <img
+            class="fullScreen"
+            src="assets/Screen Shot 2018-10-16 at 5.10.13 PM copy.png"
+            alt="test image"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- container for results -->
+    <!-- The results container should be full screen before the user has chosen any favorites, but then only take nine columns when the user has selected a favorite -->
+    <div class="container results">
+      <div class="row">
+        <div class="col-lg-9" id="searchResults">
+          <div class="imagesWithWords">
+            <img
+              src="assets/Screen Shot 2018-10-16 at 5.10.13 PM copy.png"
+              alt="test image"
+            />
+
+            <p>Text temperature</p>
+            <p>Travel price</p>
+          </div>
+          <div class="imagesWithWords">
+            <img
+              src="assets/Screen Shot 2018-10-16 at 5.10.13 PM copy.png"
+              alt="test image"
+            />
+
+            <p>Text temperature</p>
+            <p>Travel price</p>
+          </div>
+          <div class="imagesWithWords">
+            <img
+              src="assets/Screen Shot 2018-10-16 at 5.10.13 PM copy.png"
+              alt="test image"
+            />
+
+            <p>Text temperature</p>
+            <p>Travel price</p>
+          </div>
+          <div class="imagesWithWords">
+            <img
+              src="assets/Screen Shot 2018-10-16 at 5.10.13 PM copy.png"
+              alt="test image"
+            />
+
+            <p>Text temperature</p>
+            <p>Travel price</p>
+          </div>
+          <div class="imagesWithWords">
+            <img
+              src="assets/Screen Shot 2018-10-16 at 5.10.13 PM copy.png"
+              alt="test image"
+            />
+
+            <p>Text temperature</p>
+            <p>Travel price</p>
+          </div>
+        </div>
+        <div id="favoriteDestinations" class="col-lg-3">
+          <div class="imagesWithWords">
+            <img
+              src="assets/Screen Shot 2018-10-16 at 5.10.13 PM copy.png"
+              alt="test image"
+            />
+
+            <p>Text temperature</p>
+            <p>Travel price</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <button class="btn .btn-success">
+        <p>see more</p>
+      </button>
+    </div>
+
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
     <script>

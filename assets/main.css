@@ -1,0 +1,45 @@
+.container {
+  border: solid black 1px;
+}
+
+img {
+  height: 200px;
+  width: 90%;
+  object-fit: cover;
+  margin: 10px;
+}
+
+#searchResults {
+  border: solid blue 3px;
+}
+
+.imagesWithWords {
+  display: inline-block;
+  border: solid green 1px;
+  margin-left: 8px;
+  text-align: center;
+}
+
+#favoriteDestinations {
+  border: solid blue 3px;
+}
+
+.carouselImage {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.favoriteImages {
+  width: 90%;
+  margin: auto;
+}
+
+.fullScreen {
+  width: 100%;
+  margin: auto;
+}
+
+.form-group {
+  text-align: center;
+}
