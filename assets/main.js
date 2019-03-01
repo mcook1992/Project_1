@@ -1,3 +1,3 @@
 "use strict";
 
-alert("We have contact");
+//alert("We have contact");
