@@ -4,13 +4,20 @@
 
 img {
   height: 200px;
-  width: 30%;
+  width: 90%;
   object-fit: cover;
   margin: 10px;
 }
 
 #searchResults {
   border: solid blue 3px;
+}
+
+.imagesWithWords {
+  display: inline-block;
+  border: solid green 1px;
+  margin-left: 8px;
+  text-align: center;
 }
 
 #favoriteDestinations {
@@ -29,6 +36,10 @@ img {
 }
 
 .fullScreen {
-  width: 90%;
+  width: 100%;
   margin: auto;
+}
+
+.form-group {
+  text-align: center;
 }
