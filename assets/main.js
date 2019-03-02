@@ -50,7 +50,7 @@ var maxTemp = 0;
 
 
 //Listening for a dropdown option to be selected
-$('#sel1').on('change', function() {
+$('#searchDropdown').on('change', function() {
 
     //Taking the value of the User Selection and parsing it into an Int
     var userInput = parseInt(this.value);
@@ -78,6 +78,7 @@ $('#sel1').on('change', function() {
 
         case 1:
             aerisAPIRequest(26.67, -1, maxTemp);
+            closestAirport("New York");
             break;
         case 2:
             aerisAPIRequest(21, 9, maxTemp);
