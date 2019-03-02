@@ -1,5 +1,6 @@
 "use strict";
 
+
 //alert("We have contact");
 
 //Listening for a dropdown option to be selected
@@ -23,3 +24,4 @@ $('#sel1').on('change', function() {
     }
 
 });
+
