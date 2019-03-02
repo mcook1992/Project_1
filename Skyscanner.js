@@ -1,5 +1,5 @@
 // Get Cheapest flight price
-
+var dataToPushToSkyscanner = [];
 
 function getCheapestFlights (airportCode) {
 
@@ -48,27 +48,53 @@ function getCheapestFlights (airportCode) {
 //  });
 
 //Nearest airports to users city input
-function closestAirport(city1) {
-  const instance2 = axios.create({
-    headers: {
-      get: {
-        "X-RapidAPI-Key": "32546dec3amsh296808ab8e0c6f4p1dd857jsn160dd89c68ad"
-      }
-    }
-  });
-  var city = city1;
-  var airportCode;
-  instance2
-      .get(
-          "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=" +
-          city
-      )
-      .then(function (result) {
-        console.log(result.data.Places[0].PlaceId);
-        airportCode = result.data.Places[0].PlaceId;
-        //console.log(airportCode);
-       getCheapestFlights(airportCode);
-      });
+function closestAirport(arrayOfPlaces) {
+  console.log(arrayOfPlaces);
 
-  //getCheapestFlights(airportCode);
+  // for(var i = 0; i < arrayOfPlaces.length; i++){
+  //   arrayOfPlaces[i].City = arrayOfPlaces[i].City.replace(" ", "+");
+  //   console.log(arrayOfPlaces[i].City);
+  // }
+
+
+
+
+ for(var i = 0; i <arrayOfPlaces.length; i++){
+
+   let city = arrayOfPlaces[i].City;
+
+   newSkyscannerObject = {
+     id: arrayOfPlaces[i].id,
+     City: city,
+     url: "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=" + city.replace(" ", "+")
+   };
+   dataToPushToSkyscanner.push(newSkyscannerObject);
+ }
+
+  console.log(dataToPushToSkyscanner);
+
+
+  // for( var i = 0; i < arrayOfCity.length; i++) {
+  //
+  //   console.log("DEBUG: CITY PASSED TO SKYSCANNER:", city);
+  //   const instance2 = axios.create({
+  //     headers: {
+  //       get: {
+  //         "X-RapidAPI-Key": "32546dec3amsh296808ab8e0c6f4p1dd857jsn160dd89c68ad"
+  //       }
+  //     }
+  //   });
+  //
+  //
+  //   instance2
+  //       .get(
+  //           "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=" +
+  //           city
+  //       )
+  //       .then(function (result) {
+  //         console.log(result.data.Places[0].PlaceId);
+  //         arrayOfPlaces[i].AirportCode = result.data.Places[0].PlaceId;
+  //
+  //       });
+  // }
 }

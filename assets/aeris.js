@@ -47,7 +47,7 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp) {
         method: "GET"
     }).then(function (response) {
         //console.log(response.response[0].ob.tempF);
-        console.log(response)
+        //console.log(response)
         sortResults(response, maxTemp)
     }).catch(function (error) {
         console.log(error);
@@ -60,9 +60,10 @@ var counter = 0;
 arrayOfPlaces = [];
     for(var i = 0; i<result.response.length; i++){
 
-     if (counter < 16){
+     if (counter < 50){
          if (result.response[i].ob.tempC < maxTemp) {
              var newPlacesObject = {
+                 id: i,
                  Temp: result.response[i].ob.tempF,
                  City: result.response[i].place.name,
                  Country: result.response[i].place.country
@@ -90,7 +91,7 @@ arrayOfPlaces = [];
         //look at temp ...if greater than max move on else less store in array
 
     }
-    console.log(arrayOfPlaces);
+    closestAirport(arrayOfPlaces);
 }
 
 //Teddy needs country and city

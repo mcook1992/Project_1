@@ -80,7 +80,6 @@ $('#searchDropdown').on('change', function() {
 
         case 1:
             aerisAPIRequest(26.67, -1, maxTemp);
-            closestAirport("New York");
             break;
         case 2:
             aerisAPIRequest(21, 9, maxTemp);
