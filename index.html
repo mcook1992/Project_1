@@ -16,7 +16,7 @@
     /> -->
 
     <!-- Link to font -->
-    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
 
     <!-- Load icon library -->
     <link
@@ -31,12 +31,7 @@
   
   
   <body>
-    <!-- Nav bar -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <p>NavBar stuff here</p>
-      </div>
-    </nav>
+
 
 <!--carousel-->
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -70,11 +65,12 @@
           <!-- search parameters -->
 
   <div id="searchInputs">
-      <form id="searchCurrentLocation" action="action_page.php">
-      <input type="text" placeholder="WHERE ARE YOU ESCAPING?" name="search" />
-      </form>
-      <div class="form-group">
-        <label for="searchDropdown">SELECT TEMPERATURE:</label>
+  <form class="form-inline">
+      <div class="form-group" id="currLocSearch">
+        <input type="text" class="form-control" id="searchCurrLoc" placeholder="LET'S ESCAPE..." name="search">
+      </div>
+      <div class="form-group" id="tempSearch">
+        <label for="searchDropdown">DESIRED TEMP</label>
         <select class="form-control" id="searchDropdown">
           <option>Hot</option>
           <option>Moderate</option>
@@ -82,7 +78,8 @@
           <option>Freezing</option>
         </select>
       </div>
-      <button type="submit"><i class="fa fa-search"></i></button>
+      <button type="submit" class="btn btn-primary mb-2" id="searchBtn">FIND RESULTS</button>
+      </form>
   </div>
 </div>
 
@@ -94,7 +91,7 @@
         <div class="col-lg-9 col-md-12" id="searchResults">
 
           <!--Results 1 thumbnail-->
-      <div class="col-lg-4 col-md-6" id="results-container">
+      <div class="col-lg-3 col-md-6" id="results-container">
           <img
             id="resultImage"
             src="assets/Screen Shot 2018-10-16 at 5.10.13 PM copy.png"
