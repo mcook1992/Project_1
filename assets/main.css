@@ -3,7 +3,7 @@ body {
   color: black;
   font-size: 18px;
   text-transform: uppercase;
-  font-weight: light;
+  font-weight: 100px;
 }
 
 /* Site Title */
@@ -24,7 +24,7 @@ body {
 
 /* Carousel */
 #carousel-image {
-  height: 400px;
+  height: 600px;
   object-fit: cover;
 }
 
@@ -52,9 +52,10 @@ body {
   padding: 0px;
 }
 
-#results-container {
+.results-container {
   margin: 10px;
   padding: 0px;
+  display: inline-block;
 }
 
 #resultImage {
