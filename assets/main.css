@@ -1,5 +1,5 @@
 body {
-  font-family: "Questrial", sans-serif;
+  font-family: "Quicksand", sans-serif;
   color: black;
   font-size: 18px;
   text-transform: uppercase;
@@ -9,14 +9,30 @@ body {
 /* Site Title */
 #heading {
   text-align: center;
+  margin: 0px;
+  font-size: 50px;
 }
 
-#carouselImages {
-  height: 200px;
+.overlay {
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  color: black;
+  letter-spacing: 15px;
+  text-align: center;
+}
+
+/* Carousel */
+#carousel-image {
+  height: 400px;
   object-fit: cover;
 }
 
 /* Search Results */
+#searchInputs {
+  margin: 30px auto 30px auto;
+}
+
 #searchResults {
   border: solid blue 1px;
   padding: 0px;
