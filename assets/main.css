@@ -1,5 +1,5 @@
 body {
-  font-family: "Questrial", sans-serif;
+  font-family: "Quicksand", sans-serif;
   color: black;
   font-size: 18px;
   text-transform: uppercase;
@@ -9,14 +9,35 @@ body {
 /* Site Title */
 #heading {
   text-align: center;
+  margin: 0px;
+  font-size: 50px;
 }
 
-#carouselImages {
-  height: 200px;
+.overlay {
+  position: absolute;
+  top: 75%;
+  width: 100%;
+  opacity: 0.7;
+  background: #ffffff;
+  color: black;
+  font-weight: normal;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  letter-spacing: 15px;
+  text-align: center;
+}
+
+/* Carousel */
+#carousel-image {
+  height: 400px;
   object-fit: cover;
 }
 
 /* Search Results */
+#searchInputs {
+  margin: 30px auto 30px auto;
+}
+
 #searchResults {
   border: solid blue 1px;
   padding: 0px;
