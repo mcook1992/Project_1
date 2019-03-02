@@ -42,20 +42,17 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img class="d-block w-100" id="carousel-image" src="assets/images/autumn-leaves.jpg" alt="autumn leaves">
+                <img class="d-block w-100" id="carousel-image" src="assets/images/autumn-mountains.jpg" alt="autumn mountains">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" id="carousel-image" src="assets/images/beach.jpg" alt="beach">
+                <img class="d-block w-100" id="carousel-image" src="assets/images/beach-sunset-adventure.jpg" alt="beach sunset adventure">
               </div>
               <div class="carousel-item">
                 <img class="d-block w-100" id="carousel-image" src="assets/images/snow-mountain.jpg" alt="snowy mountain">
               </div>
               <div class="carousel-item">
-                  <img class="d-block w-100" id="carousel-image" src="assets/images/clouds-country-daylight-371633.jpg" alt="lake mountains">
+                  <img class="d-block w-100" id="carousel-image" src="assets/images/spring_mountain.jpg" alt="spring mountain">
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" id="carousel-image" src="assets/images/architecture-cliffside-cold-789380.jpg" alt="cliffside houses">
-                  </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -68,29 +65,28 @@
             <div class="overlay">
                 <h1 id= "heading">Seasonal Escape</h1>
             </div>
-          </div>
+          
+          
+          <!-- search parameters -->
 
-    <!-- search parameters -->
-
-    <div class="container" id="searchInputs">
-        <div class="col-lg-6 form-group">
-          <label for="sel1">Select list:</label>
-          <select class="form-control" id="sel1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
-
-          <!-- Alternative Search Bar -->
-
-          <form class="example col-lg-6" action="action_page.php">
-            <input type="text" placeholder="SEARCH" name="search" />
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
-        </div>
+  <div id="searchInputs">
+      <form id="searchCurrentLocation" action="action_page.php">
+      <input type="text" placeholder="WHERE ARE YOU ESCAPING?" name="search" />
+      </form>
+      <div class="form-group">
+        <label for="searchDropdown">SELECT TEMPERATURE:</label>
+        <select class="form-control" id="searchDropdown">
+          <option>Hot</option>
+          <option>Moderate</option>
+          <option>Cold</option>
+          <option>Freezing</option>
+        </select>
       </div>
-    </div>
+      <button type="submit"><i class="fa fa-search"></i></button>
+  </div>
+</div>
+
+    
 
     <!-- container for results -->
     <!-- The results container should be full screen-->
@@ -98,32 +94,6 @@
         <div class="col-lg-9 col-md-12" id="searchResults">
 
           <!--Results 1 thumbnail-->
-      <div class="col-lg-4 col-md-6" id="results-container">
-          <img
-            id="resultImage"
-            src="assets/Screen Shot 2018-10-16 at 5.10.13 PM copy.png"
-            alt="test image"
-          />
-          <div id="resultsText">
-          <p id="resultsLocation">LOCATION</p>
-          <p id="resultsTemp">TEMPERATURE</p>
-        </div>
-        </div>
-
-        <!--Results 2 thumbnail-->
-      <div class="col-lg-4 col-md-6" id="results-container">
-          <img
-            id="resultImage"
-            src="assets/Screen Shot 2018-10-16 at 5.10.13 PM copy.png"
-            alt="test image"
-          />
-          <div id="resultsText">
-          <p id="resultsLocation">LOCATION</p>
-          <p id="resultsTemp">TEMPERATURE</p>
-        </div>
-        </div>
-
-        <!--Results 3 thumbnail-->
       <div class="col-lg-4 col-md-6" id="results-container">
           <img
             id="resultImage"
