@@ -22,9 +22,7 @@ var results = [
 //The above is a test array. This function allows us to populate the page with five new results
 function getResults() {
   for (var i = 0; i < results.length; i++) {
-    var resultsDiv = $(
-      "<div class='col-lg-4 col-md-6' id='results-container'>"
-    );
+    var resultsDiv = $("<div class='col-lg-4 col-md-6 results-container'>");
     var resultImage = $(
       "<img id='resultImage' src='assets/Screen Shot 2018-10-16 at 5.10.13 PM copy.png' alt='test image'/>"
     );
