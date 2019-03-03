@@ -16,7 +16,7 @@
     /> -->
 
     <!-- Link to font -->
-    <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1:300" rel="stylesheet">
 
     <!-- Load icon library -->
     <link
@@ -66,20 +66,23 @@
 
   <div id="searchInputs">
   <form class="form-inline">
-      <div class="form-group" id="currLocSearch">
-        <input type="text" class="form-control" id="searchCurrLoc" placeholder="LET'S ESCAPE..." name="search">
-      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="currLocSearch" placeholder="CURRENT LOCATION" name="search">
+      </div>      
       <div class="form-group" id="tempSearch">
-        <label for="searchDropdown">DESIRED TEMP</label>
-        <select class="form-control" id="searchDropdown">
-          <option>Hot</option>
-          <option>Moderate</option>
-          <option>Cold</option>
-          <option>Freezing</option>
+          <label class="mr-sm-2" for="inlineFormCustomSelect">DESIRED TEMP</label>
+          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+            <option selected></option>
+          <option value="1">Hot</option>
+          <option value="2">Warm</option>
+          <option value="3">Cool</option>
+          <option value="4">Cold</option>
+          <option value="5">Freezing</option>
+
         </select>
 
       </div>
-      <button type="submit" class="btn btn-primary mb-2" id="searchBtn">FIND RESULTS</button>
+      <button type="submit" class="btn" id="searchBtn">GET RESULTS</button>
       </form>
   </div>
 </div>
