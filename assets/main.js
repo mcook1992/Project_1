@@ -28,9 +28,14 @@ function getResults() {
     var resultImage = $(
       "<img id='resultImage' src='assets/Screen Shot 2018-10-16 at 5.10.13 PM copy.png' alt='test image'/>"
     );
-    var resultCity = $("<p id='resultsLocation'>").text(results[i].city);
-    var resultTemp = $("<p id='resultsTemp'>").text(results[i].temp);
-    var resultFlight = $("<p id='resultsFlight'>").text(results[i].flightPrice);
+    var resultCity = $("<p class='resultsLocation'>").text(results[i].city);
+    var resultTemp = $("<p class='resultsTemp'>").text(results[i].temp);
+    var resultFlight = $("<p class='resultsFlight'>").text(
+      results[i].flightPrice
+    );
+
+    var favoriteButton = $("<p class='favoriteButton'>");
+    favoriteButton.text("Favorite");
 
     resultsDiv.append(resultImage);
     resultsDiv.append(resultCity);
