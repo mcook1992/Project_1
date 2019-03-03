@@ -3,7 +3,6 @@ body {
   color: black;
   font-size: 18px;
   text-transform: uppercase;
-  font-weight: 100px;
 }
 
 /* Site Title */
@@ -32,18 +31,47 @@ body {
 #searchInputs {
   position: absolute;
   top: 40%;
-  left: 10%;
-  width: 80%;
-  text-align: center;
-  background: white;
+  left: 20%;
+  width: 60%;
+}
+label {
+  display: inline-block;
+  font-size: 14px;
 }
 
 #currLocSearch {
-  margin: auto 20px auto 20px;
+  padding: auto 20px auto 20px;
+  height: 50px;
+  width: 250px;
+  font-size: 14px;
+  border-radius: 0px;
+}
+
+#tempSearch {
+  height: 50px;
+  width: 240px;
+  font-size: 14px;
+  border-radius: 0px;
+  border-top: #ced4da 1px solid;
+  border-bottom: #ced4da 1px solid;
+  padding: 0px 10px 0px 10px;
+  background: white;
 }
 
 #searchBtn {
-  margin: 0px;
+  font-size: 14px;
+  height: 50px;
+  background: rgb(104, 104, 104);
+  border: rgb(104, 104, 104) 1px solid;
+  color: white;
+  border-radius: 0px;
+  vertical-align: middle;
+}
+
+#searchDropdown {
+  height: 50px;
+  border-radius: 0px;
+  border: rgb(104, 104, 104) 1px solid;
 }
 
 /* Search Results Container */
@@ -53,8 +81,7 @@ body {
 }
 
 .results-container {
-  margin: 10px;
-  padding: 0px;
+  padding: 10px;
   display: inline-block;
 }
 
@@ -64,21 +91,24 @@ body {
   object-fit: cover;
 }
 
-#resultsText {
-  height: fit-content;
-  letter-spacing: 5px;
+#resultsLocation {
+  margin: 0px;
   text-align: center;
 }
 
-#resultsLocation {
+#resultsTemp {
+  color: rgb(104, 104, 104);
   margin: 0px;
+  text-align: center;
 }
 
-#resultsTemp {
+#resultsFlight {
+  text-align: center;
   color: rgb(104, 104, 104);
   margin: 0px;
 }
 
 #favoriteDestinations {
   border: solid green 1px;
+  display: inline-block;
 }
