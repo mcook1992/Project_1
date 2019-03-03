@@ -1,5 +1,7 @@
 "use strict";
 
+var departureCity;
+
 //Create sample array with results
 var results = [
   {
@@ -40,22 +42,19 @@ function getResults() {
 }
 getResults();
 
-
-
 //alert("We have contact");
 
 //this is related to the flight stuff
 
 var maxTemp = 0;
 
-
 //Listening for a dropdown option to be selected
+
 $('#searchDropdown').on('change', function() {
 
     //Taking the value of the User Selection and parsing it into an Int
     var userInput = parseInt(this.value);
-
-
+  
     //Setting Min Max For each Category
     if(userInput === 1){
         maxTemp = 35;
@@ -95,6 +94,19 @@ $('#searchDropdown').on('change', function() {
 
 });
 
+//confirm whether user actually typed a city
+
+$("#searchBtn").on("click", function(event) {
+  event.preventDefault();
+  departureCity = $("#searchCurrLoc").val();
+  console.log(departureCity);
+  if ($("#searchCurrLoc").val().length < 2) {
+    var newDiv = $("<div>");
+    var varText = $("<p>").text("We could not find any results");
+    newDiv.append(varText);
+    $("#searchResults").prepend(newDiv);
+  }
+});
 
 //Hot = 80-95
 //Warm = 70-75
@@ -102,6 +114,4 @@ $('#searchDropdown').on('change', function() {
 //cold = 30-35
 //Freezing = 10-18
 
-
 //TODO; Sort data and exclude items Display on frontend
-
