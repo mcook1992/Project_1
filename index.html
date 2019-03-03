@@ -63,12 +63,12 @@
           
           <!-- search parameters -->
 
-  <div id="searchInputs">
-  <form class="form-inline">
-      <div class="form-group">
+  <div class="container" id="searchInputs">
+  <form class="row form-inline">
+      <div class="form-group col-lg-5 searchInput-container">
         <input type="text" class="form-control" id="currLocSearch" placeholder="CURRENT LOCATION" name="search">
       </div>      
-      <div class="form-group" id="tempSearch">
+      <div class="form-group col-lg-5" id="tempSearch">
           <label class="mr-sm-2" for="inlineFormCustomSelect">DESIRED TEMP</label>
           <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
             <option selected></option>
@@ -78,7 +78,7 @@
           <option>Freezing</option>
         </select>
       </div>
-      <button type="submit" class="btn" id="searchBtn">GET RESULTS</button>
+      <button type="submit" class="btn col-lg-2" id="searchBtn">GET RESULTS</button>
       </form>
   </div>
 </div>
