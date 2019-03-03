@@ -1,17 +1,23 @@
-// Get Cheapest flight price
+//--------Declaring Global Vars ---------//
 var dataToPushToSkyscanner = [];
 var dataFromSkyscanner = [];
 var promises = []
 
-
+//--------Declaring Header with Key for API Calls Skyscanner ---------//
 const instance2 = axios.create({
   headers: {
-    get: {
-      "X-RapidAPI-Key": "32546dec3amsh296808ab8e0c6f4p1dd857jsn160dd89c68ad"
+  get: {
+    "X-RapidAPI-Key": "32546dec3amsh296808ab8e0c6f4p1dd857jsn160dd89c68ad"
     }
   }
 });
 
+//--------Functions -------//
+
+/**Function that returns the Cheapest Flights
+ *
+ * @param airportCode {string} Airport Code
+ */
 function getCheapestFlights (airportCode) {
 
   const instance = axios.create({
@@ -58,6 +64,11 @@ function getCheapestFlights (airportCode) {
 //    console.log(result.data);
 //  });
 
+
+/**Function that uses the City to determine the closest airport
+ *
+ * @param arrayOfPlaces {Object}
+ */
 //Nearest airports to users city input
 function closestAirport(arrayOfPlaces) {
 
@@ -77,55 +88,32 @@ function closestAirport(arrayOfPlaces) {
   }
   console.log(dataToPushToSkyscanner);
   console.log(dataFromSkyscanner);
-
-  // instance2.all(promises).then(function(response){
-  //    console.log(response);
-  //
-  // }).catch(function(error){
-  //   dataFromSkyscanner.push(error);
-  // });
-
-
-
-
-
-  // for( var i = 0; i < arrayOfCity.length; i++) {
-  //
-  //   console.log("DEBUG: CITY PASSED TO SKYSCANNER:", city);
-  //   const instance2 = axios.create({
-  //     headers: {
-  //       get: {
-  //         "X-RapidAPI-Key": "32546dec3amsh296808ab8e0c6f4p1dd857jsn160dd89c68ad"
-  //       }
-  //     }
-  //   });
-  //
-  //
-  //   instance2
-  //       .get(
-  //           "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=" +
-  //           city
-  //       )
-  //       .then(function (result) {
-  //         console.log(result.data.Places[0].PlaceId);
-  //         arrayOfPlaces[i].AirportCode = result.data.Places[0].PlaceId;
-  //
-  //       });
-  // }
 }
 
+/**Function to make API request using Axios
+ *
+ * @param x {int} Iterator
+ */
 function getData(x){
+  //instance2 used for the header
+  //Making API call on the Array of URLS
   instance2.get(promises[x])
       .then(function(response) {
+        //Creating new object with x being the unique ID.
         var newObjectFromData = {
             id: x,
             airportcode: response.data.Places[0].PlaceId
         };
-
         dataFromSkyscanner.push(newObjectFromData);
-        //console.log (dataToPushToSkyscanner[x].City);
+
       })
       .catch(function(error) {
-        //console.log(error);
+
       });
+}
+
+
+//Function to combine dataToPushedToSkyscanner & dataFromtSkyscanner
+function combineData(dataset1, dataset1){
+
 }
