@@ -126,3 +126,10 @@ body {
   border-radius: 0px;
   padding: 10px;
 }
+
+.favoriteBTN {
+  border: solid blue 1px;
+  background-color: aquamarine;
+  text-align: center;
+  margin: 5px;
+}

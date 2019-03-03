@@ -34,13 +34,18 @@ function getResults() {
       results[i].flightPrice
     );
 
-    var favoriteButton = $("<p class='favoriteButton'>");
+    var favoriteButton = $("<button class='favoriteButton'>");
     favoriteButton.text("Favorite");
+    favoriteButton.attr("resultCity", resultCity.text());
+    favoriteButton.attr("resultTemp", resultTemp.text());
+    favoriteButton.attr("resultFlight", resultFlight.text());
+    favoriteButton.attr("class", "btn btn-default favoriteBTN");
 
     resultsDiv.append(resultImage);
     resultsDiv.append(resultCity);
     resultsDiv.append(resultTemp);
     resultsDiv.append(resultFlight);
+    resultsDiv.append(favoriteButton);
 
     $("#searchResults").append(resultsDiv);
   }
