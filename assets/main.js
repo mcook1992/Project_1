@@ -102,14 +102,14 @@ $("#searchDropdown").on("change", function() {
 
 $("#searchBtn").on("click", function(event) {
   event.preventDefault();
-  departureCity = $("#searchCurrLoc").val();
+  departureCity = $("#origin").val();
   console.log(departureCity);
-  if ($("#searchCurrLoc").val().length < 2) {
-    var newDiv = $("<div>");
-    var varText = $("<p>").text("We could not find any results");
-    newDiv.append(varText);
-    $("#searchResults").prepend(newDiv);
-  }
+
+  //USE THIS CODE FOR WHEN WE CAN'T GET A RESULT
+  //   var newDiv = $("<div>");
+  //   var varText = $("<p>").text("We could not find any results");
+  //   newDiv.append(varText);
+  //   $("#searchResults").prepend(newDiv);
 });
 
 //Hot = 80-95
