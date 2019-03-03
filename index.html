@@ -8,7 +8,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <!-- <link
       rel="stylesheet"
@@ -56,6 +56,7 @@
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>
+
             <div class="overlay">
                 <h1 id= "heading">Seasonal Escape</h1>
             </div>
@@ -72,11 +73,14 @@
           <label class="mr-sm-2" for="inlineFormCustomSelect">DESIRED TEMP</label>
           <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
             <option selected></option>
-          <option>Hot</option>
-          <option>Moderate</option>
-          <option>Cold</option>
-          <option>Freezing</option>
+          <option value="1">Hot</option>
+          <option value="2">Warm</option>
+          <option value="3">Cool</option>
+          <option value="4">Cold</option>
+          <option value="5">Freezing</option>
+
         </select>
+
       </div>
       <button type="submit" class="btn" id="searchBtn">GET RESULTS</button>
       </form>
@@ -117,6 +121,11 @@
       };
       firebase.initializeApp(config);
     </script>
+
+
+
+
+
      
 
      <!-- Latest compiled and minified JavaScript -->
@@ -125,5 +134,11 @@
   
     <!--Link to javascript file-->
      <script type="text/javascript" src="assets/main.js"></script>
+    <script type="text/javascript" src="assets/aeris.js"></script>
+
+    <!-- Linking Axios, Moment and Skyscanner JS Files-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="skyscanner.js"></script>
   </body>
 </html>
