@@ -133,3 +133,8 @@ body {
   text-align: center;
   margin: 5px;
 }
+
+.favoriteImage {
+  height: 300px;
+  width: 300px;
+}
