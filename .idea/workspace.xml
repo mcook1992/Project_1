@@ -4,6 +4,7 @@
     <list default="true" id="06062fef-0606-4340-b6a0-4e226ea10e9e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Skyscanner.js" beforeDir="false" afterPath="$PROJECT_DIR$/Skyscanner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/aeris.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/aeris.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,26 +20,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/aeris.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="501">
-              <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/assets/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1076">
-              <caret line="81" column="48" selection-start-line="81" selection-start-column="48" selection-end-line="81" selection-end-column="48" />
+            <state relative-caret-position="511">
+              <caret line="85" column="10" lean-forward="true" selection-start-line="85" selection-start-column="10" selection-end-line="85" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="449">
+              <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Skyscanner.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1725">
-              <caret line="115" column="68" lean-forward="true" selection-start-line="115" selection-start-column="68" selection-end-line="115" selection-end-column="68" />
+            <state relative-caret-position="48">
+              <caret line="108" column="4" lean-forward="true" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
+              <folding>
+                <marker date="1551665245202" expanded="true" signature="4349:5127" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="631">
-              <caret line="162" selection-start-line="162" selection-end-line="162" />
+            <state relative-caret-position="124">
+              <caret line="14" column="82" lean-forward="true" selection-start-line="14" selection-start-column="82" selection-end-line="14" selection-end-column="82" />
             </state>
           </provider>
         </entry>
@@ -60,6 +64,12 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>clos</find>
+      <find>com</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -152,7 +162,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36496000" />
+    <option name="totallyTimeSpent" value="42477000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -191,31 +201,34 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.editorconfig" />
-    <entry file="file://$PROJECT_DIR$/assets/aeris.js">
+    <entry file="file://$PROJECT_DIR$/assets/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+        <state relative-caret-position="449">
+          <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="631">
-          <caret line="162" selection-start-line="162" selection-end-line="162" />
+        <state relative-caret-position="124">
+          <caret line="14" column="82" lean-forward="true" selection-start-line="14" selection-start-column="82" selection-end-line="14" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/aeris.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="85" column="10" lean-forward="true" selection-start-line="85" selection-start-column="10" selection-end-line="85" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Skyscanner.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1725">
-          <caret line="115" column="68" lean-forward="true" selection-start-line="115" selection-start-column="68" selection-end-line="115" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1076">
-          <caret line="81" column="48" selection-start-line="81" selection-start-column="48" selection-end-line="81" selection-end-column="48" />
+        <state relative-caret-position="48">
+          <caret line="108" column="4" lean-forward="true" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
+          <folding>
+            <marker date="1551665245202" expanded="true" signature="4349:5127" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

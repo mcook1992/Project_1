@@ -91,7 +91,7 @@ arrayOfPlaces = [];
         //look at temp ...if greater than max move on else less store in array
 
     }
-    closestAirport(arrayOfPlaces);
+    closestAirportByArray(arrayOfPlaces);
 }
 
 //Teddy needs country and city
