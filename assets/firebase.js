@@ -7,7 +7,6 @@ var uid = "test";
 var sampleArray = [];
 var favoritesRef = database.ref("/users");
 var specifcUserRef = favoritesRef.child(uid);
-console.log("Specific user ref " + specifcUserRef);
 
 //load firebase info on page load
 
@@ -26,6 +25,8 @@ specifcUserRef.once("value", function(snapshot) {
   //   }
   // });
 });
+
+//function that populates users past favorites on Firebase
 
 function populatePreviousFavoriteElements() {
   for (var x = 0; x < sampleArray.length; x++) {
@@ -51,19 +52,84 @@ function populatePreviousFavoriteElements() {
 
 //setting up users
 
-// $("#signUp").on("click", function(event) {
-//   event.preventDefault();
+$("#signUp").on("click", function(event) {
+  event.preventDefault();
+  $("#signInForm").attr("class", "d-none");
+  $("#signUpForm").removeClass("d-none");
 
-//   firebase
-//     .auth()
-//     .createUserWithEmailAndPassword(email, password)
-//     .catch(function(error) {
-//       // Handle Errors here.
-//       var errorCode = error.code;
-//       var errorMessage = error.message;
-//       // ...
-//     });
-// });
+  //   firebase
+  //     .auth()
+  //     .createUserWithEmailAndPassword(email, password)
+  //     .catch(function(error) {
+  //       // Handle Errors here.
+  //       var errorCode = error.code;
+  //       var errorMessage = error.message;
+  //       // ...
+  // });
+});
+
+$("#signIn").on("click", function(event) {
+  event.preventDefault();
+  $("#signUpForm").attr("class", "d-none");
+  $("#signInForm").removeClass("d-none");
+});
+
+//creating new user when submit button is pressed
+$("#signUpSubmit").on("click", function(event) {
+  event.preventDefault();
+  var email = $("#signUpEmail").val();
+  var password = $("#signUpPwd").val();
+
+  console.log("The email and password is " + email + password);
+
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode + errorMessage);
+      // ...
+    });
+});
+
+//signing in existing users
+
+$("#signInSubmit").on("click", function(event) {
+  event.preventDefault();
+  var email = $("#signInEmail").val();
+  var password = $("#signInPwd").val();
+
+  console.log("The email and password is " + email + password);
+
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
+});
+
+//letting users sign out
+
+$("#signOut").on("click", function(event) {
+  event.preventDefault();
+  firebase
+    .auth()
+    .signOut()
+    .then(
+      function() {
+        console.log("Signed Out");
+      },
+      function(error) {
+        console.error("Sign Out Error", error);
+      }
+    );
+});
 
 //setting test data
 
