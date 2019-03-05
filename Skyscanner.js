@@ -19,25 +19,30 @@ const instance = axios.create({
  *
  * @param airportCode {string} Airport Code
  */
-function getCheapestFlights (x) {
+function getCheapestFlights (dataFromSkyscanner) {
 
-  let airportCode = dataFromSkyscanner[x].airportcode;
-  console.log("DEBUG AIRPORT CODE", airportCode);
+  for (var i = 0; i < dataFromSkyscanner.length; i++){
+    dataFromSkyscanner[i];
 
-  instance
-      .get(
-          "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SFO-sky/"+airportCode+"/2019-10-01?inboundpartialdate=2019-11-01'"
-      )
-      .then(function (result) {
-        console.log(result);
-        var masterRecordObject = {
-          id: dataFromSkyscanner[x].id,
-          city: dataFromSkyscanner[x].city,
-          temp: dataFromSkyscanner[x].temp,
-          price: result.data.Quotes["0"].MinPrice
-        };
-        masterRecord.push(masterRecordObject);
-      })
+  }
+
+  // let airportCode = dataFromSkyscanner[x].airportcode;
+  // console.log("DEBUG AIRPORT CODE", airportCode);
+  //
+  // instance
+  //     .get(
+  //         "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SFO-sky/"+airportCode+"/2019-10-01?inboundpartialdate=2019-11-01'"
+  //     )
+  //     .then(function (result) {
+  //       console.log(result);
+  //       var masterRecordObject = {
+  //         id: dataFromSkyscanner[x].id,
+  //         city: dataFromSkyscanner[x].city,
+  //         temp: dataFromSkyscanner[x].temp,
+  //         price: result.data.Quotes["0"].MinPrice
+  //       };
+  //       masterRecord.push(masterRecordObject);
+  //     })
 //
 //       }
 // //         console.log(result.data);
@@ -103,13 +108,6 @@ function closestAirportByArray(arrayOfPlaces) {
   console.log(dataFromSkyscanner);
 
 
-  for (var i = 0; i < dataFromSkyscanner.length; i++) {
-      console.log("DEBUG INSIDE LOOP");
-      getCheapestFlights(i);
-  };
-
-
-
 
   // console.log(dataFromSkyscanner[0]);
   // for (var y = 0; y < dataFromSkyscanner.length; y++){
@@ -132,15 +130,43 @@ function getData(x){
         var newObjectFromData = {
             id: x,
             airportcode: response.data.Places[0].PlaceId,
+          //TODO: Getting error here
             city: arrayOfPlaces[x].City,
             temp: arrayOfPlaces[x].Temp
         };
         dataFromSkyscanner.push(newObjectFromData);
 
-      })
-      .catch(function(error) {
+      }).then(function(response){
+    console.log("INSIDE THEN NUMBER 2");
+        console.log(x);
+        console.log(dataFromSkyscanner[x].airportcode);
+        //TODO: Getting undefined error here airport code
+    instance
+        .get(
+            "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SFO-sky/"+dataFromSkyscanner[x].airportcode+"/2019-10-01?inboundpartialdate=2019-11-01'"
+        )
+        .then(function (result) {
+          console.log("DEBUG QUOTES", result.data.Quotes);
+          if(result.data.Quotes.length > 0) {
+            console.log("INSIDE IF STATEMENT");
+            var masterRecordObject = {
+              id: dataFromSkyscanner[x].id,
+              city: dataFromSkyscanner[x].city,
+              airportcode: dataFromSkyscanner[x].airportcode,
+              temp: dataFromSkyscanner[x].temp,
+              price: result.data.Quotes[0].MinPrice
+            }
+            masterRecord.push(masterRecordObject);
+          }
+          console.log(masterRecord);
+        })
 
+
+  })
+      .catch(function(error) {
+        console.log(error);
       });
+
 }
 
 

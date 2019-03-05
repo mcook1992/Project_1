@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06062fef-0606-4340-b6a0-4e226ea10e9e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Skyscanner.js" beforeDir="false" afterPath="$PROJECT_DIR$/Skyscanner.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/aeris.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/aeris.js" afterDir="false" />
     </list>
@@ -20,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/aeris.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="85" column="10" lean-forward="true" selection-start-line="85" selection-start-column="10" selection-end-line="85" selection-end-column="10" />
+            <state relative-caret-position="459">
+              <caret line="38" column="106" selection-start-line="38" selection-start-column="106" selection-end-line="38" selection-end-column="106" />
             </state>
           </provider>
         </entry>
@@ -29,7 +28,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
+            <state relative-caret-position="-162">
               <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
             </state>
           </provider>
@@ -38,10 +37,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Skyscanner.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="108" column="4" lean-forward="true" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
+            <state relative-caret-position="620">
+              <caret line="157" column="11" selection-start-line="157" selection-start-column="11" selection-end-line="157" selection-end-column="11" />
               <folding>
-                <marker date="1551665245202" expanded="true" signature="4349:5127" ph="..." />
+                <marker date="1551757293461" expanded="true" signature="5403:6181" ph="..." />
               </folding>
             </state>
           </provider>
@@ -50,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="14" column="82" lean-forward="true" selection-start-line="14" selection-start-column="82" selection-end-line="14" selection-end-column="82" />
+            <state relative-caret-position="286">
+              <caret line="139" column="37" lean-forward="true" selection-start-line="139" selection-start-column="37" selection-end-line="139" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -67,8 +66,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>clos</find>
       <find>com</find>
+      <find>clos</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -162,7 +161,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42477000" />
+    <option name="totallyTimeSpent" value="46700000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -203,31 +202,31 @@
     <entry file="file://$PROJECT_DIR$/.editorconfig" />
     <entry file="file://$PROJECT_DIR$/assets/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
+        <state relative-caret-position="-162">
           <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="14" column="82" lean-forward="true" selection-start-line="14" selection-start-column="82" selection-end-line="14" selection-end-column="82" />
+        <state relative-caret-position="286">
+          <caret line="139" column="37" lean-forward="true" selection-start-line="139" selection-start-column="37" selection-end-line="139" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/aeris.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="85" column="10" lean-forward="true" selection-start-line="85" selection-start-column="10" selection-end-line="85" selection-end-column="10" />
+        <state relative-caret-position="459">
+          <caret line="38" column="106" selection-start-line="38" selection-start-column="106" selection-end-line="38" selection-end-column="106" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Skyscanner.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="108" column="4" lean-forward="true" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
+        <state relative-caret-position="620">
+          <caret line="157" column="11" selection-start-line="157" selection-start-column="11" selection-end-line="157" selection-end-column="11" />
           <folding>
-            <marker date="1551665245202" expanded="true" signature="4349:5127" ph="..." />
+            <marker date="1551757293461" expanded="true" signature="5403:6181" ph="..." />
           </folding>
         </state>
       </provider>

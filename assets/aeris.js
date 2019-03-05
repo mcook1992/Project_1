@@ -36,7 +36,7 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp) {
     const apiCredentials = 'client_id=bvpLuTRRLs5tMbTcMqmhm&client_secret=0Bpm48kezpufXqLX6UzBvpBSfkGG4zOH6b6CuUwj';
 
     //Params part of the API Query
-    const endPoint = '/observations/search?query=temp:'+ tempParam + '&sort=temp:'+ sortParam + '&limit=250&';
+    const endPoint = '/observations/search?query=temp:'+ tempParam + '&sort=temp:'+ sortParam + '&limit=50&';
 
     //Building the full query
     const queryUrl = aerisApiBeginFixed + endPoint + apiCredentials;
