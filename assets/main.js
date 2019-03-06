@@ -29,6 +29,7 @@ function createImageResults() {
 function getResults() {
   for (var i = 0; i < cityResults.length; i++) {
     var resultsDiv = $("<div class='col-lg-4 col-md-6 results-container'>");
+    
     var resultImage = $("<img class='resultImage'/>");
     resultImage.attr("src", imageResults[i]);
     resultImage.attr("alt", cityResults[i]);
@@ -41,6 +42,23 @@ function getResults() {
     resultsDiv.append(resultCity);
     // resultsDiv.append(resultTemp);
     // resultsDiv.append(resultFlight);
+
+   
+
+    var favoriteButton = $("<button class='favoriteButton'>");
+    favoriteButton.text("Favorite");
+    favoriteButton.attr("resultCity", resultCity.text());
+    favoriteButton.attr("resultTemp", "70");
+    favoriteButton.attr("resultFlight", "250");
+    favoriteButton.attr("imageURL", imageResults[i]);
+    favoriteButton.attr("class", "btn btn-default favoriteBTN");
+
+    resultsDiv.append(resultImage);
+    resultsDiv.append(resultCity);
+//     resultsDiv.append(resultTemp);
+//     resultsDiv.append(resultFlight);
+    resultsDiv.append(favoriteButton);
+
 
     $("#searchResults").append(resultsDiv);
   }
