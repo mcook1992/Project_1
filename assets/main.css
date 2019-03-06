@@ -76,29 +76,30 @@ body {
 
 /* Search Results Container */
 .results-container {
-  padding: 0px;
+  padding: 10px;
   display: inline-block;
 }
 
-#resultImage {
+.resultImage {
   display: block;
   width: 100%;
   object-fit: cover;
+  height: 250px;
 }
 
-#resultsLocation {
+.resultsLocation {
   margin: 0px;
   text-align: center;
 }
 
-#resultsTemp {
+.resultsTemp {
   color: rgb(104, 104, 104);
   margin: 0px;
   text-align: center;
   font-size: 14px;
 }
 
-#resultsFlight {
+.resultsFlight {
   text-align: center;
   color: rgb(104, 104, 104);
   margin: 0px;
@@ -125,4 +126,16 @@ body {
   color: white;
   border-radius: 0px;
   padding: 10px;
+}
+
+.favoriteBTN {
+  border: solid blue 1px;
+  background-color: aquamarine;
+  text-align: center;
+  margin: 5px;
+}
+
+.favoriteImage {
+  height: 300px;
+  width: 300px;
 }

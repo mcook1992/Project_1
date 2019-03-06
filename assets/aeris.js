@@ -20,6 +20,7 @@
 //const queryUrl = 'https://api.aerisapi.com/normals/closest?p=:auto&radius=100000miles&limit=100000&client_id=bvpLuTRRLs5tMbTcMqmhm&client_secret=0Bpm48kezpufXqLX6UzBvpBSfkGG4zOH6b6CuUwj';
 
 //Initilaizing Global Array Var of Places
+alert("we have contact with aeris");
 var arrayOfPlaces = [];
 
 /********
@@ -51,7 +52,7 @@ function aerisAPIRequest(tempParam, sortParam, maxTemp) {
   })
     .then(function(response) {
       //console.log(response.response[0].ob.tempF);
-      console.log(response);
+      //console.log(response)
       sortResults(response, maxTemp);
     })
     .catch(function(error) {
@@ -63,9 +64,10 @@ function sortResults(result, maxTemp) {
   var counter = 0;
   arrayOfPlaces = [];
   for (var i = 0; i < result.response.length; i++) {
-    if (counter < 16) {
+    if (counter < 250) {
       if (result.response[i].ob.tempC < maxTemp) {
         var newPlacesObject = {
+          id: i,
           Temp: result.response[i].ob.tempF,
           City: result.response[i].place.name,
           Country: result.response[i].place.country
@@ -96,7 +98,7 @@ function sortResults(result, maxTemp) {
     //result.response[i].ob.tempC
     //look at temp ...if greater than max move on else less store in array
   }
-  console.log(arrayOfPlaces);
+  closestAirportByArray(arrayOfPlaces);
 }
 
 //Teddy needs country and city

@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"
+    />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link
@@ -46,6 +54,9 @@
 
     <!--Link CSS stylesheet-->
     <link rel="stylesheet" href="assets/main.css" />
+
+    <link rel="icon" href="assets/images/sunfav.ico" type="image/x-icon" />
+
     <title>Seasonal Escape</title>
   </head>
 
@@ -155,8 +166,9 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-9 col-md-9" id="searchResults"></div>
-        <div class="col-lg-3 col-md-3" id="favoriteDestinations">
+        <div class="col-lg-3 col-md-3">
           <p>Favorite Location</p>
+          <div id="favoriteDestinations"></div>
         </div>
       </div>
       <div class="row moreButton">
@@ -167,6 +179,48 @@
         </button>
       </div>
     </div>
+
+    <!-- login and sign up button -->
+    <button id="signIn">Sign In</button>
+    <button id="signUp">Sign Up</button>
+    <button id="signOut">Sign Out</button>
+
+    <!-- Register Form -->
+    <form class="d-none" id="signUpForm" action="/action_page.php">
+      <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" id="signUpEmail" />
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="signUpPwd" />
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" /> Remember me</label>
+      </div>
+      <button type="submit" class="btn btn-default" id="signUpSubmit">
+        Submit
+      </button>
+    </form>
+
+    <!-- sign in form -->
+
+    <form class="d-none" id="signInForm" action="/action_page.php">
+      <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" id="signInEmail" />
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="signInPwd" />
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" /> Remember me</label>
+      </div>
+      <button type="submit" class="btn btn-default" id="signInSubmit">
+        Submit
+      </button>
+    </form>
 
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
@@ -190,13 +244,16 @@
       crossorigin="anonymous"
     ></script>
 
-    <!--Link to javascript file-->
-    <script type="text/javascript" src="assets/main.js"></script>
-    <script type="text/javascript" src="assets/aeris.js"></script>
-
     <!-- Linking Axios, Moment and Skyscanner JS Files-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!--Link to Aeris and Skyscanner-->
+    <script type="text/javascript" src="assets/aeris.js"></script>
     <script src="skyscanner.js"></script>
+
+    <!--Link to in-house javascript files-->
+    <!-- <script type="text/javascript" src="assets/main.js"></script> -->
+    <script type="text/javascript" src="assets/firebase.js"></script>
   </body>
 </html>
