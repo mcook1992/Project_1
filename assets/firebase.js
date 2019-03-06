@@ -60,10 +60,7 @@ specifcUserRef.once("value", function(snapshot) {
 function populatePreviousFavoriteElements() {
   for (var x = 0; x < sampleArray.length; x++) {
     var favoritesDiv = $("<div class='col-lg-4 col-md-6 favorites-container'>");
-    var resultImage = $("<img>").attr(
-      "src",
-      "assets/Screen Shot 2018-10-16 at 5.10.13 PM copy.png"
-    );
+    var resultImage = $("<img>").attr("src", sampleArray[x].imageURL);
     resultImage.attr("class", "favoriteImage");
     var resultCity = sampleArray[x].cityName;
     var resultTemp = sampleArray[x].temperature;
@@ -171,6 +168,8 @@ $("#signOut").on("click", function(event) {
       function() {
         console.log("Signed Out");
         $("#favoriteDestinations").empty();
+        $("#signIn").removeClass("d-none");
+        $("#signUp").removeClass("d-none");
       },
       function(error) {
         console.error("Sign Out Error", error);
@@ -182,6 +181,7 @@ $("#signOut").on("click", function(event) {
 
 $("#searchResults").on("click", ".favoriteBTN", function(event) {
   event.preventDefault();
+  var imageLink = $(this).attr("imageURL");
   database
     .ref()
     .child("/users")
@@ -189,7 +189,7 @@ $("#searchResults").on("click", ".favoriteBTN", function(event) {
     .push({
       cityName: $(this).attr("resultCity"),
       temperature: $(this).attr("resultTemp"),
-      imageURL: "tktk",
+      imageURL: imageLink,
       flightPrice: $(this).attr("resultFlight")
     });
 
@@ -197,10 +197,7 @@ $("#searchResults").on("click", ".favoriteBTN", function(event) {
 
   var favoritesDiv = $("<div class='col-lg-4 col-md-6 favorites-container'>");
   var resultImageURL = $(this).attr("imageURL");
-  var resultImage = $("<img>").attr(
-    "src",
-    "assets/Screen Shot 2018-10-16 at 5.10.13 PM copy.png"
-  );
+  var resultImage = $("<img>").attr("src", imageLink);
   resultImage.attr("class", "favoriteImage");
   var resultCity = $(this).attr("resultCity");
   var resultTemp = $(this).attr("resultTemp");
