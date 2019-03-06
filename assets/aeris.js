@@ -59,21 +59,22 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp) {
              const airportRequestURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=" + cityName.replace(" ", "+");
              skyScanner.get(airportRequestURI)
                  .then((res) => {
-                     const destinationAirportID = res.data.Places[0].PlaceId;
-                     const cheapestFlightsURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/JFK-sky/" + destinationAirportID + "/2019-10-01?inboundpartialdate=2019-11-01'"
-                     skyScanner.get(cheapestFlightsURI)
-                         .then(res => {
-                             console.log(res);
-                             const {Places: places, Quotes: quotes} = res.data;
-                             places.length > 1 && quotes.length > 0 ? console.log(`FLIGHT: ${places[1].IataCode} to ${places[0].IataCode} @ $${quotes[0].MinPrice} on ${quotes[0].QuoteDateTime}`) : null;
-                             
-                         });
-
+                     if(res.data.Places[0].PlaceId !== undefined) {
+                         const destinationAirportID = res.data.Places[0].PlaceId;
+                         const cheapestFlightsURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/JFK-sky/" + destinationAirportID + "/2019-10-01?inboundpartialdate=2019-11-01'"
+                         skyScanner.get(cheapestFlightsURI)
+                             .then(res => {
+                                 //console.log(res);
+                                 const {Places: places, Quotes: quotes} = res.data;
+                                 places.length > 1 && quotes.length > 0 ? console.log(`FLIGHT: ${places[1].IataCode} to ${places[0].IataCode} @ $${quotes[0].MinPrice} on ${quotes[0].QuoteDateTime}`) : null;
+                                 
+                             });
+                     }
                  })
-                 .catch(err => console.log(err))
+                 .catch()
          })
     }).catch(function (error) {
-        console.log(error);
+        //console.log(error);
     });
 
 }
