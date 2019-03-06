@@ -36,7 +36,7 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp) {
     const apiCredentials = 'client_id=bvpLuTRRLs5tMbTcMqmhm&client_secret=0Bpm48kezpufXqLX6UzBvpBSfkGG4zOH6b6CuUwj';
 
     //Params part of the API Query
-    const endPoint = '/observations/search?query=temp:'+ tempParam + '&sort=temp:'+ sortParam + '&limit=50&';
+    const endPoint = '/observations/search?query=temp:'+ tempParam + '&sort=temp:'+ sortParam + '&limit=250&';
 
     //Building the full query
     const queryUrl = aerisApiBeginFixed + endPoint + apiCredentials;
@@ -60,7 +60,7 @@ var counter = 0;
 arrayOfPlaces = [];
     for(var i = 0; i<result.response.length; i++){
 
-     if (counter < 50){
+     if (counter < 250){
          if (result.response[i].ob.tempC < maxTemp) {
              var newPlacesObject = {
                  id: i,

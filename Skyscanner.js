@@ -122,6 +122,8 @@ function closestAirportByArray(arrayOfPlaces) {
  * @param x {int} Iterator
  */
 function getData(x){
+
+
   //instance2 used for the header
   //Making API call on the Array of URLS
   instance.get(promises[x])
@@ -129,21 +131,23 @@ function getData(x){
         //Creating new object with x being the unique ID.
         var newObjectFromData = {
             id: x,
-            airportcode: response.data.Places[0].PlaceId,
+            airportcode: response.data.Places["0"].PlaceId,
           //TODO: Getting error here
             city: arrayOfPlaces[x].City,
             temp: arrayOfPlaces[x].Temp
         };
-        dataFromSkyscanner.push(newObjectFromData);
 
+        dataFromSkyscanner.push(newObjectFromData);
+        console.log("INSIDE THEN NUMBER 1", response.data);
+        return (response.data.Places[0].PlaceId);
       }).then(function(response){
     console.log("INSIDE THEN NUMBER 2");
-        console.log(x);
-        console.log(dataFromSkyscanner[x].airportcode);
+
+        console.log("DEBUG: ",response);
         //TODO: Getting undefined error here airport code
     instance
         .get(
-            "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SFO-sky/"+dataFromSkyscanner[x].airportcode+"/2019-10-01?inboundpartialdate=2019-11-01'"
+            "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/JFK-sky/"+dataFromSkyscanner[x].airportcode+"/2019-10-01?inboundpartialdate=2019-11-01'"
         )
         .then(function (result) {
           console.log("DEBUG QUOTES", result.data.Quotes);
@@ -164,7 +168,7 @@ function getData(x){
 
   })
       .catch(function(error) {
-        console.log(error);
+        console.log(error, x);
       });
 
 }
