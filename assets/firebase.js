@@ -111,7 +111,11 @@ $("#signUpSubmit").on("click", function(event) {
 
   //making sure the user email is actually an email
 
-  if (email.indexOf("@") > -1 && email.indexOf(".") > -1) {
+  if (
+    email.indexOf("@") > -1 &&
+    email.indexOf(".") > -1 &&
+    password.length > 5
+  ) {
     console.log("The email and password is " + email + password);
 
     firebase
@@ -126,7 +130,9 @@ $("#signUpSubmit").on("click", function(event) {
         // ...
       });
   } else {
-    console.log("Please enter a valid email");
+    console.log(
+      "Please enter a valid email email and password using the instructions given"
+    );
   }
 });
 
@@ -171,8 +177,6 @@ $("#signOut").on("click", function(event) {
       }
     );
 });
-
-//setting test data
 
 //pushing data from favorite button into firebase
 
