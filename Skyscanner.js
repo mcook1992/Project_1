@@ -128,16 +128,18 @@ function getData(x){
   //Making API call on the Array of URLS
   instance.get(promises[x])
       .then(function(response) {
-        //Creating new object with x being the unique ID.
-        var newObjectFromData = {
+        if (response.data < 0) {
+          var newObjectFromData = {
             id: x,
             airportcode: response.data.Places["0"].PlaceId,
-          //TODO: Getting error here
+            //TODO: Getting error here
             city: arrayOfPlaces[x].City,
             temp: arrayOfPlaces[x].Temp
-        };
+          };
 
-        dataFromSkyscanner.push(newObjectFromData);
+          dataFromSkyscanner.push(newObjectFromData);
+
+        }
         console.log("INSIDE THEN NUMBER 1", response.data);
         return (response.data.Places[0].PlaceId);
       }).then(function(response){
