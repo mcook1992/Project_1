@@ -8,6 +8,35 @@ var sampleArray = [];
 var favoritesRef = database.ref("/users");
 var specifcUserRef = favoritesRef.child(uid);
 
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    uid = firebase.auth().currentUser.uid;
+    specifcUserRef = favoritesRef.child(uid);
+    $("#signIn").addClass("d-none");
+    $("#signUp").addClass("d-none");
+
+    specifcUserRef.once("value", function(snapshot) {
+      //   console.log(snapshot.val().users);
+
+      snapshot.forEach(function(userFavoriteInfo) {
+        var userFavoriteInfoVal = userFavoriteInfo.val();
+        sampleArray.push(userFavoriteInfoVal);
+      });
+
+      populatePreviousFavoriteElements();
+      // .then(function() {
+      //   for (var x = 0; x < sampleArray.length; x++) {
+      //     console.log(sampleArray[x].cityName);
+      //   }
+      // });
+    });
+  } else {
+    console.log("No user is signed on");
+
+    // No user is signed in.
+  }
+});
+
 //load firebase info on page load
 
 specifcUserRef.once("value", function(snapshot) {
@@ -80,18 +109,25 @@ $("#signUpSubmit").on("click", function(event) {
   var email = $("#signUpEmail").val();
   var password = $("#signUpPwd").val();
 
-  console.log("The email and password is " + email + password);
+  //making sure the user email is actually an email
 
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode + errorMessage);
-      // ...
-    });
+  if (email.indexOf("@") > -1 && email.indexOf(".") > -1) {
+    console.log("The email and password is " + email + password);
+
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode + errorMessage);
+
+        // ...
+      });
+  } else {
+    console.log("Please enter a valid email");
+  }
 });
 
 //signing in existing users
@@ -112,6 +148,10 @@ $("#signInSubmit").on("click", function(event) {
       var errorMessage = error.message;
       // ...
     });
+
+  $("#signInForm").addClass("d-none");
+  $("#signIn").addClass("d-none");
+  $("#signUp").addClass("d-none");
 });
 
 //letting users sign out
@@ -124,6 +164,7 @@ $("#signOut").on("click", function(event) {
     .then(
       function() {
         console.log("Signed Out");
+        $("#favoriteDestinations").empty();
       },
       function(error) {
         console.error("Sign Out Error", error);
