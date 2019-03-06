@@ -3,13 +3,13 @@
 var departureCity = $("#origin").val();
 
 //unsplash image results API and URLs
-//let cityResults = ["London", "New York", "Paris", "San Juan", "Honolulu"];
+let cityResults = ["London", "New York", "Paris", "San Juan", "Honolulu"];
 let imageResults = [];
 
 function createImageResults() {
   //for loop to get array of flyTags into data
-  for (let i = 0; i < masterRecord.length; i++) {
-    let imageData = masterRecord[i].city;
+  for (let i = 0; i < cityResults.length; i++) {
+    let imageData = cityResults[i].city;
     let queryURL =
       "https://api.unsplash.com/search/photos?client_id=5eed2514ffdf7db5fd835355ef84cf034625d5a36587ce7e829c47f1164c2e91&page=1&query=" +
       imageData;
@@ -29,38 +29,36 @@ createImageResults();
 
 //displays results: runs through 4 arrays for city, image, temp, price, to create results blocks
 function getResults() {
-  for (var i = 0; i < masterRecord.length; i++) {
+  for (var i = 0; i < cityResults.length; i++) {
     var resultsDiv = $("<div class='col-lg-4 col-md-6 results-container'>");
 
     var resultImage = $("<img class='resultImage'/>");
     resultImage.attr("src", imageResults[i]);
-    resultImage.attr("alt", masterRecord[i]);
+    resultImage.attr("alt", cityResults[i]);
 
-    var resultCity = $("<p class='resultsLocation'>").text(
-      masterRecord[i].city
-    );
-    var resultTemp = $("<p class='resultsTemp'>").text(masterRecord[i].temp);
-    var resultFlight = $("<p class='resultsFlight'>").text(
-      masterRecord[i].price
-    );
+    var resultCity = $("<p class='resultsLocation'>").text(cityResults[i]);
+    //var resultTemp = $("<p class='resultsTemp'>").text(masterRecord[i].temp);
+    // var resultFlight = $("<p class='resultsFlight'>").text(
+    //   masterRecord[i].price
+    // );
 
     resultsDiv.append(resultImage);
     resultsDiv.append(resultCity);
-    resultsDiv.append(resultTemp);
-    resultsDiv.append(resultFlight);
+    // resultsDiv.append(resultTemp);
+    // resultsDiv.append(resultFlight);
 
     var favoriteButton = $("<button class='favoriteButton'>");
     favoriteButton.text("Favorite");
     favoriteButton.attr("resultCity", resultCity.text());
-    favoriteButton.attr("resultTemp", resultTemp.text());
-    favoriteButton.attr("resultFlight", resultFlight.text());
+    favoriteButton.attr("resultTemp", "79");
+    favoriteButton.attr("resultFlight", "250");
     favoriteButton.attr("imageURL", imageResults[i]);
     favoriteButton.attr("class", "btn btn-default favoriteBTN");
 
     resultsDiv.append(resultImage);
     resultsDiv.append(resultCity);
-    resultsDiv.append(resultTemp);
-    resultsDiv.append(resultFlight);
+    // resultsDiv.append(resultTemp);
+    // resultsDiv.append(resultFlight);
     resultsDiv.append(favoriteButton);
 
     $("#searchResults").append(resultsDiv);
