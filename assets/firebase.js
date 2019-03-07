@@ -204,7 +204,6 @@ $("#searchResults").on("click", ".favoriteBTN", function(event) {
   var resultFlight = $(this).attr("resultFlight");
 
   favoritesDiv.append(resultImage);
-  favoritesDiv.append(resultImageURL);
   favoritesDiv.append(resultCity);
   favoritesDiv.append(resultTemp);
   favoritesDiv.append(resultFlight);

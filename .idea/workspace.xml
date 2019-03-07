@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06062fef-0606-4340-b6a0-4e226ea10e9e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/assets/aeris.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/aeris.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/firebase.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/aeris.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="438">
-              <caret line="86" column="70" selection-start-line="86" selection-start-column="70" selection-end-line="86" selection-end-column="70" />
+              <caret line="86" column="54" selection-start-line="86" selection-start-column="54" selection-end-line="86" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -30,6 +29,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="760">
               <caret line="142" lean-forward="true" selection-start-line="142" selection-end-line="142" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/firebase.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="490">
+              <caret line="205" column="35" selection-start-line="205" selection-start-column="35" selection-end-line="205" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -90,6 +98,7 @@
         <option value="$PROJECT_DIR$/assets/main.css" />
         <option value="$PROJECT_DIR$/assets/main.js" />
         <option value="$PROJECT_DIR$/assets/aeris.js" />
+        <option value="$PROJECT_DIR$/assets/firebase.js" />
       </list>
     </option>
   </component>
@@ -171,7 +180,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61394000" />
+    <option name="totallyTimeSpent" value="61643000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -210,13 +219,6 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.editorconfig" />
-    <entry file="file://$PROJECT_DIR$/assets/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="142" lean-forward="true" selection-start-line="142" selection-end-line="142" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Skyscanner.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1712">
@@ -244,7 +246,21 @@
     <entry file="file://$PROJECT_DIR$/assets/aeris.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="438">
-          <caret line="86" column="70" selection-start-line="86" selection-start-column="70" selection-end-line="86" selection-end-column="70" />
+          <caret line="86" column="54" selection-start-line="86" selection-start-column="54" selection-end-line="86" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="760">
+          <caret line="142" lean-forward="true" selection-start-line="142" selection-end-line="142" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/firebase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="205" column="35" selection-start-line="205" selection-start-column="35" selection-end-line="205" selection-end-column="35" />
         </state>
       </provider>
     </entry>
