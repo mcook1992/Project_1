@@ -94,29 +94,52 @@
         <div class="checkbox col-lg-4 col-md-4 col-sm-4">
           <label><input type="checkbox" /> Remember me</label>
         </div>
-        <button type="submit" class="btn btn-default" id="signUpSubmit">
-          Submit
-        </button>
+        <div class="col-lg-2 col-md-2 col-sm-2">
+          <button type="submit" class="btn btn-default" id="signUpSubmit">
+            Submit
+          </button>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2">
+          <p id="signUpClose">
+            Close
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </p>
+        </div>
       </div>
     </form>
 
     <!-- sign in form -->
 
     <form class="d-none" id="signInForm" action="/action_page.php">
-      <div class="form-group">
-        <label for="email">Email address:</label>
-        <input type="email" class="form-control" id="signInEmail" />
+      <div class="row">
+        <div class="col-lg-2 col-md-2"></div>
+        <div class="form-group col-lg-4 col-md-4 col-sm-10">
+          <label for="email">Email address:</label>
+          <input type="email" class="form-control" id="signInEmail" />
+        </div>
+        <div class="form-group col-lg-4 col-md-4 col-sm-10">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" id="signInPwd" />
+        </div>
+        <div class="col-lg-2 col-md-2"></div>
       </div>
-      <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="signInPwd" />
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2"></div>
+        <div class="checkbox col-lg-4 col-md-4 col-sm-4">
+          <label><input type="checkbox" /> Remember me</label>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2">
+          <button type="submit" class="btn btn-default" id="signInSubmit">
+            Sign In
+          </button>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2">
+          <p id="signInClose">
+            Close
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </p>
+        </div>
       </div>
-      <div class="checkbox">
-        <label><input type="checkbox" /> Remember me</label>
-      </div>
-      <button type="submit" class="btn btn-default" id="signInSubmit">
-        Submit
-      </button>
     </form>
 
     <!--carousel-->

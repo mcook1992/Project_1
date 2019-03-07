@@ -36,44 +36,48 @@ body {
   padding: 0px 5px 0px 5px;
 }
 
-.registerBtns:hover {
+.registerBtns:hover,
+.registerBtns:focus {
   font-weight: bolder;
   color: rgb(3, 26, 100);
-}
-
-button:focus {
   outline: none;
-  font-weight: bolder;
-  color: rgb(3, 26, 100);
 }
 
-#signUpForm {
+#signUpForm,
+#signInForm {
   font-size: 14px;
   text-transform: uppercase;
   color: rgb(104, 104, 104);
   margin: 10px 0px 10px 0px;
 }
 
-#signUpSubmit {
+#signUpSubmit,
+#signInSubmit {
   font-size: 14px;
   text-transform: uppercase;
   background: white;
   border: white 1px solid;
   color: rgb(104, 104, 104);
   border-radius: 0px;
-  padding: 0px 5px 0px 5px;
-  margin-left: 10px;
+  padding: 0px;
 }
 
-#signUpSubmit:hover {
+#signUpSubmit:hover,
+#signUpSubmit:focus,
+#signInSubmit:hover,
+#signInSubmit:focus {
   font-weight: bolder;
-  color: rgb(3, 26, 100);
+  color: rgb(104, 104, 104);
+  font-size: 14px;
+  text-transform: uppercase;
 }
 
-#signUpSubmit:focus {
+#signUpClose,
+#signInClose {
+  font-family: "Gothic A1", sans-serif;
   outline: none;
-  font-weight: bolder;
-  color: rgb(3, 26, 100);
+  color: rgb(104, 104, 104);
+  text-align: right;
 }
 
 /* Carousel */
@@ -184,8 +188,9 @@ button:focus {
 }
 
 .favoriteBTN {
-  border: solid blue 1px;
-  background-color: aquamarine;
+  border: none;
+  background: rgb(104, 104, 104);
+  color: white;
   text-align: center;
   margin: 5px;
 }
