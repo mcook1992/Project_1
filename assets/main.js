@@ -5,7 +5,8 @@ var userTempSelect = $("#temp").val();
 
 
 //unsplash image results API and URLs
-let cityResults = ["London", "New York", "Paris", "San Juan", "Honolulu"];
+//let cityResults = ["London", "New York", "Paris", "San Juan", "Honolulu"];
+let cityResults = [];
 let imageResults = [];
 // Generic function for capturing the tag name from the data-attribute
 //createImageResults();
@@ -29,6 +30,8 @@ function createImageResults() {
 }
 //displays results: runs through 4 arrays for city, image, temp, price, to create results blocks
 function getResults() {
+    console.log("DEBUG: INSIDE GETRESULTS FUNCTION FROM CALLBACK");
+    createImageResults();
   for (var i = 0; i < cityResults.length; i++) {
     var resultsDiv = $("<div class='col-lg-4 col-md-6 results-container'>");
     
@@ -102,7 +105,7 @@ $('#searchBtn').on("click", function(evt) {
     switch (userInput) {
 
         case 1:
-            aerisAPIRequest(26.67, -1, maxTemp);
+            aerisAPIRequest(26.67, -1, maxTemp, getResults());
             break;
         case 2:
             aerisAPIRequest(21, 9, maxTemp);
