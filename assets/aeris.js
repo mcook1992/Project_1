@@ -72,21 +72,34 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp) {
                                  places.length > 1 && quotes.length > 0 ? console.log(`FLIGHT: ${places[1].IataCode} to ${places[0].IataCode} @ $${quotes[0].MinPrice} on ${quotes[0].QuoteDateTime}`) : null;
 
                                  if(places.length > 1 && quotes.length > 0) {
+                                     var createDisplayObject;
                                      if(places[0].IataCode === "JFK") {
-                                         cityResults.push(places[1].CityName)
+                                         createDisplayObject = {
+                                             cityName: places[1].CityName,
+                                             price: "$" + quotes[0].MinPrice,
+                                             temp: 70
+                                         };
+
+                                         cityResults.push(createDisplayObject);
                                      }else{
-                                         cityResults.push(places[0].CityName);
+                                         createDisplayObject = {
+                                             cityName: places[0].CityName,
+                                             price: "$" + quotes[0].MinPrice,
+                                             temp: 70
+                                         };
+
+                                         cityResults.push(createDisplayObject);
                                      }
-                                     console.log(cityResults);
+
 
                                  }
 
-                             });
+                             })
                      }
                  })
                  .catch()
          })
-    }).catch(function (error) {
+    }).done((res) => { console.log("DEBUG: HIT THE LAST THEN"); setTimeout(createImageResults,30000); setTimeout(getResults,40000)}).catch(function (error) {
         //console.log(error);
 
     });
