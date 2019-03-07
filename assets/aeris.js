@@ -2,7 +2,6 @@
  * Different enpoints that were tested
  */
 
-
 /** Enpoint Observation Returning temp closests to Zip 10027 and sorting temp on response*/
 //const endPoint = '/observations/closest?p=10027&search?query=sort=temp:&limit=25' + '&';
 
@@ -23,6 +22,7 @@
 //Initilaizing Global Array Var of Places
 var arrayOfPlaces = [];
 
+
 const skyScanner = axios.create({
     headers: {
         get: {
@@ -31,10 +31,12 @@ const skyScanner = axios.create({
     }
 });
 
+
 /********
-*Aeris API Request Function is a reusable Ajax call to Aeris API
-*@params tempParam is looking for a temperature (in Celsius) and will add it into the query to be sent to Aeris.
+ *Aeris API Request Function is a reusable Ajax call to Aeris API
+ *@params tempParam is looking for a temperature (in Celsius) and will add it into the query to be sent to Aeris.
  */
+
 function aerisAPIRequest (tempParam, sortParam, maxTemp) {
     //API URL beginning - Shouldn't Change
     const aerisApiBeginFixed = 'https://api.aerisapi.com';
@@ -75,8 +77,8 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp) {
          })
     }).catch(function (error) {
         //console.log(error);
-    });
 
+    });
 }
 
 function sortResults (result, maxTemp){
@@ -117,6 +119,7 @@ arrayOfPlaces = [];
     }
     return arrayOfPlaces;
     // closestAirportByArray(arrayOfPlaces);
+
 }
 
 //Teddy needs country and city

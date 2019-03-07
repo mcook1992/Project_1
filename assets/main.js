@@ -1,57 +1,79 @@
 "use strict";
 
-//Create sample array with results
-var results = [
-  {
-    city: "NYC",
-    temp: "30F",
-    flightPrice: "$250"
-  },
-  {
-    city: "Los Angeles",
-    temp: "70F",
-    flightPrice: "$375"
-  },
-  {
-    city: "Rome",
-    temp: "55F",
-    flightPrice: "$500"
-  }
-];
+var departureCity = $("#origin").val();
 
-//The above is a test array. This function allows us to populate the page with five new results
+//unsplash image results API and URLs
+let cityResults = ["London", "New York", "Paris", "San Juan", "Honolulu"];
+let imageResults = [];
+// Generic function for capturing the tag name from the data-attribute
+createImageResults();
+
+function createImageResults() {
+  //for loop to get array of flyTags into data
+  for (let i = 0; i < cityResults.length; i++) {
+    let imageData = cityResults[i];
+    let queryURL =
+      "https://api.unsplash.com/search/photos?client_id=5eed2514ffdf7db5fd835355ef84cf034625d5a36587ce7e829c47f1164c2e91&page=1&query=" +
+      imageData;
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      imageResults.push(response.results["0"].urls.regular);
+    });
+  }
+  console.log(imageResults);
+}
+//displays results: runs through 4 arrays for city, image, temp, price, to create results blocks
 function getResults() {
-  for (var i = 0; i < results.length; i++) {
-    var resultsDiv = $(
-      "<div class='col-lg-4 col-md-6' id='results-container'>"
-    );
-    var resultImage = $(
-      "<img id='resultImage' src='assets/Screen Shot 2018-10-16 at 5.10.13 PM copy.png' alt='test image'/>"
-    );
-    var resultCity = $("<p id='resultsLocation'>").text(results[i].city);
-    var resultTemp = $("<p id='resultsTemp'>").text(results[i].temp);
-    var resultFlight = $("<p id='resultsFlight'>").text(results[i].flightPrice);
+  for (var i = 0; i < cityResults.length; i++) {
+    var resultsDiv = $("<div class='col-lg-4 col-md-6 results-container'>");
+    
+    var resultImage = $("<img class='resultImage'/>");
+    resultImage.attr("src", imageResults[i]);
+    resultImage.attr("alt", cityResults[i]);
+
+    var resultCity = $("<p id='resultsLocation'>").text(cityResults[i]);
+    // var resultTemp = $("<p id='resultsTemp'>").text(results[i].temp);
+    // var resultFlight = $("<p id='resultsFlight'>").text(results[i].flightPrice);
 
     resultsDiv.append(resultImage);
     resultsDiv.append(resultCity);
-    resultsDiv.append(resultTemp);
-    resultsDiv.append(resultFlight);
+    // resultsDiv.append(resultTemp);
+    // resultsDiv.append(resultFlight);
+
+   
+
+    var favoriteButton = $("<button class='favoriteButton'>");
+    favoriteButton.text("Favorite");
+    favoriteButton.attr("resultCity", resultCity.text());
+    favoriteButton.attr("resultTemp", "70");
+    favoriteButton.attr("resultFlight", "250");
+    favoriteButton.attr("imageURL", imageResults[i]);
+    favoriteButton.attr("class", "btn btn-default favoriteBTN");
+
+    resultsDiv.append(resultImage);
+    resultsDiv.append(resultCity);
+//     resultsDiv.append(resultTemp);
+//     resultsDiv.append(resultFlight);
+    resultsDiv.append(favoriteButton);
+
 
     $("#searchResults").append(resultsDiv);
   }
 }
-getResults();
-
-
-
-//alert("We have contact");
+$("#searchBtn").on("click", function(event) {
+  event.preventDefault();
+  getResults();
+});
 
 //this is related to the flight stuff
 
 var maxTemp = 0;
 
-
 //Listening for a dropdown option to be selected
+
 $('#searchDropdown').on('change', function() {
 
     //Taking the value of the User Selection and parsing it into an Int
@@ -94,8 +116,21 @@ $('#searchDropdown').on('change', function() {
 
     }
 
-});
 
+
+//confirm whether user actually typed a city
+
+$("#searchBtn").on("click", function(event) {
+  event.preventDefault();
+  departureCity = $("#origin").val();
+  console.log(departureCity);
+
+  //USE THIS CODE FOR WHEN WE CAN'T GET A RESULT
+  //   var newDiv = $("<div>");
+  //   var varText = $("<p>").text("We could not find any results");
+  //   newDiv.append(varText);
+  //   $("#searchResults").prepend(newDiv);
+});
 
 //Hot = 80-95
 //Warm = 70-75
@@ -103,6 +138,4 @@ $('#searchDropdown').on('change', function() {
 //cold = 30-35
 //Freezing = 10-18
 
-
 //TODO; Sort data and exclude items Display on frontend
-

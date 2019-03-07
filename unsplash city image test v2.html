@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>UNSPLASH TEST</title>
+    <style type="text/css">
+      button,
+      div,
+      form,
+      input {
+        margin: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>UNSPLASH</h1>
+
+      <!-- Rendered Buttons will get Dumped Here  -->
+      <div id="buttons-view"></div>
+
+      <form id="tag-form">
+        <label for="tag-input">Add a tag, Yo!</label>
+        <input type="text" id="tag-input" /><br />
+
+        <!-- Button triggers new tag to be added -->
+        <input id="add-tag" type="submit" value="Add a tag, Yo!" />
+        <!-- <input id="run-flylist" type="submit" value="run through array" /> -->
+      </form>
+
+      <div id="gifs-appear-here"></div>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script type="text/javascript">
+        // Initial array of tags
+
+        var tags = ["London", "New York", "Matagami", "San Juan", "Honolulu"];
+
+        let flyTags = tags;
+
+        let flyURLs = [];
+
+        // Generic function for capturing the tag name from the data-attribute
+
+        createflyTagURLs();
+
+        function createflyTagURLs() {
+          //for loop to get array of flyTags into data
+          for (let i = 0; i < flyTags.length; i++) {
+            var flyData = flyTags[i];
+            var queryURL =
+              "https://api.unsplash.com/search/photos?client_id=5eed2514ffdf7db5fd835355ef84cf034625d5a36587ce7e829c47f1164c2e91&page=1&query=" +
+              flyData;
+
+            $.ajax({
+              url: queryURL,
+              method: "GET"
+            }).then(function(response) {
+              //   console.log(response);
+              //   console.log(response.results["0"].urls.regular);
+              // let flyResults = response;
+              flyURLs.push(response.results["0"].urls.regular);
+              tagDiv = $("<div>");
+
+              // Make an image tag with jQuery and store it in a variable named tagImage.
+              tagImage = $("<img>");
+              // Set the image's src to results[i]'s fixed_height.url.
+              tagImage.attr(
+                "src",
+                response.results["0"].urls.regular
+                //   response.data[3].images.fixed_height_still.url
+              );
+
+              tagDiv.append(tagImage);
+
+              $("#gifs-appear-here").append(tagDiv);
+            });
+          }
+          console.log(flyURLs);
+        }
+
+        function alertTagName() {
+          // YOUR CODE GOES HERE!!!
+          var data = $(this).attr("data-name");
+          var queryURL =
+            "https://api.unsplash.com/search/photos?client_id=5eed2514ffdf7db5fd835355ef84cf034625d5a36587ce7e829c47f1164c2e91&page=1&query=" +
+            data;
+          //   console.log(this);
+          //   console.log(data);
+
+          $.ajax({
+            url: queryURL,
+            method: "GET"
+          }).then(function(response) {
+            // Step 1: Run this file, click a button, and see what the response object looks like in the browser's console.
+            // Open up the data key, then open up the 0th, element. Study the keys and how the JSON is structured.
+            console.log(response);
+
+            console.log(response.results["0"].urls.regular);
+            // Step 2: since the image information is inside of the data key,
+            // make a variable named results and set it equal to response.data
+            // =============== put step 2 in between these dashes ==================
+            var results = response;
+            // ========================
+            // Step 3: uncomment the for loop above and the closing curly bracket below.
+            // ============= put step 3 in between these dashes ======================
+            // Make a div with jQuery and store it in a variable named tagDiv.
+            tagDiv = $("<div>");
+
+            // Make an image tag with jQuery and store it in a variable named tagImage.
+            tagImage = $("<img>");
+            // Set the image's src to results[i]'s fixed_height.url.
+            tagImage.attr(
+              "src",
+              response.results["0"].urls.regular
+              //   response.data[3].images.fixed_height_still.url
+            );
+
+            tagDiv.append(tagImage);
+
+            $("#gifs-appear-here").prepend(tagDiv);
+          });
+        }
+
+        // Function for displaying tag data
+        function renderButtons() {
+          // Deleting the tags prior to adding new tags
+          // (this is necessary otherwise we will have repeat buttons)
+          $("#buttons-view").empty();
+
+          // Looping through the array of tags
+          for (var i = 0; i < tags.length; i++) {
+            // Then dynamicaly generating buttons for each tag in the array
+            // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+            var a = $("<button>");
+            // Adding a class
+            a.addClass("tag");
+            // Added a data-attribute
+            a.attr("data-name", tags[i]);
+            // Provided the initial button text
+            a.text(tags[i]);
+            // Added the button to the HTML
+            $("#buttons-view").append(a);
+          }
+        }
+
+        // This function handles events where one button is clicked
+        $("#add-tag").on("click", function(event) {
+          event.preventDefault();
+
+          // This line grabs the input from the textbox
+          var tag = $("#tag-input")
+            .val()
+            .trim();
+
+          // The tag from the textbox is then added to our array
+          tags.push(tag);
+
+          // Calling renderButtons which handles the processing of our tag array
+          renderButtons();
+        });
+
+        // Function for displaying the tag info
+
+        // We're adding a click event listener to all elements with the class "tag"
+        // We're adding the event listener to the document itself because it will
+        // work for dynamically generated elements
+        // $(".tags").on("click") will only add listeners to elements that are on the page at that time
+        $(document).on("click", ".tag", alertTagName);
+
+        // Calling the renderButtons function to display the intial buttons
+        renderButtons();
+        // Create a on click function which replaces the current static image with a live image by changing the url in the src attribute:
+        $(document).ready(function() {
+          $(".clickImage").click(function() {
+            console.log("clicking on image works");
+            var src = $(this).attr("src");
+            $(this).attr("src", src.replace("_s.gif", ".gif"));
+          });
+        });
+        // $(function() {
+        //   $(".clickImage").each(function(switchImage) {
+        //     var src = $(switchImage).attr("src");
+
+        //     $(switchImage).on(
+        //       "click",
+        //       function(event) {
+        //         $(this).attr("src", src.replace("_s.gif", ".gif"));
+        //       },
+        //       function() {
+        //         $(this).attr("src", src);
+        //       }
+        //     );
+        //   });
+        // });
+      </script>
+    </div>
+  </body>
+</html>
