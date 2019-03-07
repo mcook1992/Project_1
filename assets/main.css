@@ -21,6 +21,65 @@ body {
   text-align: center;
 }
 
+/* Register login + forms */
+#loginOptions {
+  margin: 5px 5px 0px 0px;
+}
+
+.registerBtns {
+  font-size: 14px;
+  text-transform: uppercase;
+  background: white;
+  border: white 1px solid;
+  color: rgb(104, 104, 104);
+  border-radius: 0px;
+  padding: 0px 5px 0px 5px;
+}
+
+.registerBtns:hover,
+.registerBtns:focus {
+  font-weight: bolder;
+  color: rgb(3, 26, 100);
+  outline: none;
+}
+
+#signUpForm,
+#signInForm {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: rgb(104, 104, 104);
+  margin: 10px 0px 10px 0px;
+}
+
+#signUpSubmit,
+#signInSubmit {
+  font-size: 14px;
+  text-transform: uppercase;
+  background: white;
+  border: white 1px solid;
+  color: rgb(104, 104, 104);
+  border-radius: 0px;
+  padding: 0px;
+}
+
+#signUpSubmit:hover,
+#signUpSubmit:focus,
+#signInSubmit:hover,
+#signInSubmit:focus {
+  font-weight: bolder;
+  color: rgb(104, 104, 104);
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+#signUpClose,
+#signInClose {
+  font-family: "Gothic A1", sans-serif;
+  outline: none;
+  color: rgb(104, 104, 104);
+  text-align: right;
+}
+
 /* Carousel */
 #carousel-image {
   height: 600px;
@@ -129,8 +188,9 @@ body {
 }
 
 .favoriteBTN {
-  border: solid blue 1px;
-  background-color: aquamarine;
+  border: none;
+  background: rgb(104, 104, 104);
+  color: white;
   text-align: center;
   margin: 5px;
 }
