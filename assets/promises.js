@@ -32,9 +32,9 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp) {
         const cities = await sortResults(data, maxTemp);
         console.log(cities);
 
-        const skyscannerPromises = await getSkyscannerPromises(cities);
-        
-       
+        await getSkyscannerPromises(cities);
+
+
     };
 
 
@@ -138,15 +138,36 @@ function sortResults (result, maxTemp) {
 
 }
 
-function getSkyscannerPromises (cities) {
-    console.log(cities[1]);
-    console.log("IN FUNCTION");
+async function getSkyscannerPromises (cities) {
         for (var i = 0; i < cities.length; i++) {
             const airportRequestURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=" + cities[i].City.replace(" ", "+");
-            const p = skyScanner.get(airportRequestURI);
-            promisesData.push(p);
+            skyScanner.get(airportRequestURI).then(res=>{
+                const {Places: places, Quotes: quotes} = res.data;
+                if(places.length > 1 && quotes.length > 0) {
+                var createDisplayObject;
+                if(places[0].IataCode === "JFK") {
+                    createDisplayObject = {
+                        cityName: places[1].CityName,
+                        price: "$" + quotes[0].MinPrice,
+                        temp: 70
+                    };
+
+                    cityResults.push(createDisplayObject);
+                }else{
+                    createDisplayObject = {
+                        cityName: places[0].CityName,
+                        price: "$" + quotes[0].MinPrice,
+                        temp: 70
+                    };
+
+                    cityResults.push(createDisplayObject);
+                }
+            }}
+                ).catch();
+            //promisesData.push(airportRequestURI);
 
         }
+        console.log(promisesData);
 
     }
 
