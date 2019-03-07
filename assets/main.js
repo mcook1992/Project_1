@@ -14,7 +14,7 @@ let imageResults = [];
 function createImageResults() {
   //for loop to get array of flyTags into data
   for (let i = 0; i < cityResults.length; i++) {
-    let imageData = cityResults[i];
+    let imageData = cityResults[i].cityName;
     let queryURL =
       "https://api.unsplash.com/search/photos?client_id=5eed2514ffdf7db5fd835355ef84cf034625d5a36587ce7e829c47f1164c2e91&page=1&query=" +
       imageData;
@@ -31,22 +31,22 @@ function createImageResults() {
 //displays results: runs through 4 arrays for city, image, temp, price, to create results blocks
 function getResults() {
     console.log("DEBUG: INSIDE GETRESULTS FUNCTION FROM CALLBACK");
-    createImageResults();
+
   for (var i = 0; i < cityResults.length; i++) {
     var resultsDiv = $("<div class='col-lg-4 col-md-6 results-container'>");
     
     var resultImage = $("<img class='resultImage'/>");
     resultImage.attr("src", imageResults[i]);
-    resultImage.attr("alt", cityResults[i]);
+    resultImage.attr("alt", cityResults[i].cityName);
 
-    var resultCity = $("<p id='resultsLocation'>").text(cityResults[i]);
-    // var resultTemp = $("<p id='resultsTemp'>").text(results[i].temp);
-    // var resultFlight = $("<p id='resultsFlight'>").text(results[i].flightPrice);
+    var resultCity = $("<p id='resultsLocation'>").text(cityResults[i].cityName);
+    var resultTemp = $("<p id='resultsTemp'>").text(cityResults[i].temp);
+    var resultFlight = $("<p id='resultsFlight'>").text(cityResults[i].price);
 
     resultsDiv.append(resultImage);
     resultsDiv.append(resultCity);
-    // resultsDiv.append(resultTemp);
-    // resultsDiv.append(resultFlight);
+    resultsDiv.append(resultTemp);
+    resultsDiv.append(resultFlight);
 
    
 
@@ -105,7 +105,7 @@ $('#searchBtn').on("click", function(evt) {
     switch (userInput) {
 
         case 1:
-            aerisAPIRequest(26.67, -1, maxTemp, getResults());
+            aerisAPIRequest(26.67, -1, maxTemp);
             break;
         case 2:
             aerisAPIRequest(21, 9, maxTemp);
