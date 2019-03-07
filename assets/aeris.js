@@ -68,9 +68,22 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp) {
                              .then(res => {
                                  //console.log(res);
                                  const {Places: places, Quotes: quotes} = res.data;
+
                                  places.length > 1 && quotes.length > 0 ? console.log(`FLIGHT: ${places[1].IataCode} to ${places[0].IataCode} @ $${quotes[0].MinPrice} on ${quotes[0].QuoteDateTime}`) : null;
-                                 
-                             });
+
+                                 if(places.length > 1 && quotes.length > 0) {
+                                     if(places[0].IataCode === "JFK") {
+                                         cityResults.push(places[1].CityName)
+                                     }else{
+                                         cityResults.push(places[0].CityName);
+                                     }
+                                     console.log(cityResults);
+                                 }
+
+                             }
+                             axios.get
+
+                             );
                      }
                  })
                  .catch()

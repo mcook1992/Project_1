@@ -1,12 +1,14 @@
 "use strict";
 
 var departureCity = $("#origin").val();
+var userTempSelect = $("#temp").val();
+
 
 //unsplash image results API and URLs
 let cityResults = ["London", "New York", "Paris", "San Juan", "Honolulu"];
 let imageResults = [];
 // Generic function for capturing the tag name from the data-attribute
-createImageResults();
+//createImageResults();
 
 function createImageResults() {
   //for loop to get array of flyTags into data
@@ -65,7 +67,7 @@ function getResults() {
 }
 $("#searchBtn").on("click", function(event) {
   event.preventDefault();
-  getResults();
+  //getResults();
 });
 
 //this is related to the flight stuff
@@ -74,31 +76,30 @@ var maxTemp = 0;
 
 //Listening for a dropdown option to be selected
 
-$('#searchDropdown').on('change', function() {
+$('#searchBtn').on("click", function(evt) {
 
+    var userInput = parseInt($("#temp").val());
     //Taking the value of the User Selection and parsing it into an Int
-    var userInput = parseInt(this.value);
-
-
+    console.log(userInput);
     //Setting Min Max For each Category
-    if(userInput === 1){
+    if (userInput === 1) {
         maxTemp = 35;
     }
-    if(userInput === 2){
+    if (userInput === 2) {
         maxTemp = 23.8889;
     }
-    if(userInput === 3){
+    if (userInput === 3) {
         maxTemp = 18.3333;
     }
-    if(userInput === 4){
+    if (userInput === 4) {
         maxTemp = 1.67;
     }
-    if(userInput === 5){
+    if (userInput === 5) {
         maxTemp = -7.77778;
     }
 
     //Selected value is passed as a parameter to a switch
-    switch(userInput){
+    switch (userInput) {
 
         case 1:
             aerisAPIRequest(26.67, -1, maxTemp);
@@ -107,7 +108,7 @@ $('#searchDropdown').on('change', function() {
             aerisAPIRequest(21, 9, maxTemp);
             break;
         case 3:
-            aerisAPIRequest(12.78,999, maxTemp);
+            aerisAPIRequest(12.78, 999, maxTemp);
             break;
         case 4:
             aerisAPIRequest(-1.1, 999, maxTemp);
@@ -116,7 +117,7 @@ $('#searchDropdown').on('change', function() {
 
     }
 
-
+})
 
 //confirm whether user actually typed a city
 
