@@ -78,12 +78,10 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp) {
                                          cityResults.push(places[0].CityName);
                                      }
                                      console.log(cityResults);
+
                                  }
 
-                             }
-                             axios.get
-
-                             );
+                             });
                      }
                  })
                  .catch()
