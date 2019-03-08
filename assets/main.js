@@ -11,7 +11,7 @@ const skyScanner = axios.create({
         }
     }
 });
-let cityResults = []; //Returns Citys based on Temp
+let cityResults = []; //Returns Cities based on Temp
 let imageResults = []; //Returns images based on city
 
 
