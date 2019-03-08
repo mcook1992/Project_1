@@ -35,6 +35,7 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp) {
         getSkyscannerPromises(cities);
 
 
+
     };
 
 
@@ -149,13 +150,35 @@ async function getSkyscannerPromises (cities) {
                 const destinationAirportID = res.data.Places[0].PlaceId;
 
                 if(destinationAirportID !== undefined){
-                    //console.log(destinationAirportID);
+
                 const cheapestFlightsURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/JFK-sky/" + destinationAirportID + "/2019-03-28?inboundpartialdate=2019-04-15'"
 
-                skyScanner.get(cheapestFlightsURI).then(res => {
+                    skyScanner.get(cheapestFlightsURI).then(res => {
 
                 const {Places: places, Quotes: quotes} = res.data;
-                places.length > 1 && quotes.length > 0 ? console.log(`FLIGHT: ${places[1].IataCode} to ${places[0].IataCode} @ $${quotes[0].MinPrice} on ${quotes[0].QuoteDateTime}`) : null;
+                    //console.log(res.data);
+                if( places.length > 1 && quotes.length > 0){
+                    //console.log(`FLIGHT: ${places[1].IataCode} to ${places[0].IataCode} @ $${quotes[0].MinPrice} on ${quotes[0].QuoteDateTime}`);
+                    const cityName = places[0].IataCode === "JFK" ? places[1].CityName : places[0].CityName
+                    console.log(cityName);
+                    const imageResult = fetch(`https://api.unsplash.com/search/photos?client_id=5eed2514ffdf7db5fd835355ef84cf034625d5a36587ce7e829c47f1164c2e91&page=1&query=${cityName}`);
+                    const data = imageResult.json();
+                    console.log(data);
+
+                    //console.log(cityName);
+                    //console.log(`FLIGHT: ${places[1].IataCode} to ${places[0].IataCode} @ $${quotes[0].MinPrice} on ${quotes[0].QuoteDateTime}`);
+                    //createImageResults(cityName);
+
+                }
+
+
+
+
+
+
+
+
+
 
             }).
                 catch(error => {}
@@ -177,3 +200,17 @@ async function getSkyscannerPromises (cities) {
 
     }
 
+async function createImageResults(city) {
+    console.log("DEBUG", city)
+    //for loop to get array of flyTags into data
+
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+
+    });
+
+    console.log("DEBUG:  IMAGE" , imageResults);
+}

@@ -11,10 +11,9 @@ let imageResults = [];
 // Generic function for capturing the tag name from the data-attribute
 //createImageResults();
 
-function createImageResults() {
+async function createImageResults(city) {
   //for loop to get array of flyTags into data
-  for (let i = 0; i < cityResults.length; i++) {
-    let imageData = cityResults[i].cityName;
+    let imageData = city;
     let queryURL =
       "https://api.unsplash.com/search/photos?client_id=5eed2514ffdf7db5fd835355ef84cf034625d5a36587ce7e829c47f1164c2e91&page=1&query=" +
       imageData;
@@ -23,9 +22,9 @@ function createImageResults() {
       url: queryURL,
       method: "GET"
     }).then(function(response) {
-      imageResults.push(response.results["0"].urls.regular);
+      
     });
-  }
+  
   console.log(imageResults);
 }
 //displays results: runs through 4 arrays for city, image, temp, price, to create results blocks
