@@ -9,7 +9,7 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
 
     //Clearing array on every request
     arrayOfPlaces = [];
-
+    cityResults= [];
 
     <!--BUILDING AERIS URL REQUEST -->
     //API URL beginning - Shouldn't Change
@@ -45,13 +45,13 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
 
                                  const {Places: places, Quotes: quotes} = res.data;
 
-                                 places.length > 1 && quotes.length > 0 ? console.log(`FLIGHT: ${places[1].IataCode} to ${places[0].IataCode} @ $${quotes[0].MinPrice} on ${quotes[0].QuoteDateTime}`) : null;
+                                 places.length > 1 && quotes.length > 0 ? console.log(`FLIGHT: ${places[1].IataCode} to ${places[0].IataCode} @ $${quotes[0].MinPrice} on ${quotes[0].QuoteDateTime} on ${country}`) : null;
 
                                  if(places.length > 1 && quotes.length > 0) {
                                      var createDisplayObject;
                                      if(places[0].IataCode === "JFK" ||
-                    places[0].IataCode === "LGA" ||
-                    places[0].IataCode === "EWR") {
+                                        places[0].IataCode === "LGA" ||
+                                        places[0].IataCode === "EWR") {
                                          createDisplayObject = {
                                              cityName: places[1].CityName,
                                              price: "$" + quotes[0].MinPrice,
