@@ -37,7 +37,7 @@ const skyScanner = axios.create({
  *@params tempParam is looking for a temperature (in Celsius) and will add it into the query to be sent to Aeris.
  */
 
-function aerisAPIRequest (tempParam, sortParam, maxTemp) {
+function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
     //API URL beginning - Shouldn't Change
     const aerisApiBeginFixed = 'https://api.aerisapi.com';
     //API Credentials - Shouldn't Change
@@ -58,12 +58,12 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp) {
         //console.log(response)
         const cities = sortResults(response, maxTemp);
          cities.forEach(({City: cityName}) => {
-             const airportRequestURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=" + cityName.replace(" ", "+");
+             const airportRequestURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/?query=" + cityName.replace(" ", "+");
              skyScanner.get(airportRequestURI)
                  .then((res) => {
                      if(res.data.Places[0].PlaceId !== undefined) {
                          const destinationAirportID = res.data.Places[0].PlaceId;
-                         const cheapestFlightsURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/JFK-sky/" + destinationAirportID + "/2019-10-01?inboundpartialdate=2019-11-01'"
+                         const cheapestFlightsURI = `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${OriginID}/`+ destinationAirportID + "/2019-10-01?inboundpartialdate=2019-11-01"
                          skyScanner.get(cheapestFlightsURI)
                              .then(res => {
                                  //console.log(res);
