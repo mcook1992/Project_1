@@ -105,17 +105,29 @@ $('#searchBtn').on("click", function(evt) {
     switch (userInput) {
 
         case 1:
+            $("#searchResults").empty();
+            imageResults = [];
+            console.log(imageResults);
             aerisAPIRequest(26.67, -1, maxTemp, departureCity);
             break;
         case 2:
+            $("#searchResults").empty();
+            imageResults = [];
+            console.log(imageResults);
             aerisAPIRequest(21, 9, maxTemp, departureCity);
             break;
         case 3:
+            $("#searchResults").empty();
+            imageResults = [];
             aerisAPIRequest(12.78, 999, maxTemp, departureCity);
             break;
         case 4:
+            $("#searchResults").empty();
+            imageResults = [];
             aerisAPIRequest(-1.1, 999, maxTemp, departureCity);
         case 5:
+            $("#searchResults").empty();
+            imageResults = [];
             aerisAPIRequest(-12.22, 999, maxTemp, departureCity);
 
     }

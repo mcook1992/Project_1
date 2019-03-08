@@ -38,6 +38,7 @@ const skyScanner = axios.create({
  */
 
 function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
+    arrayOfPlaces = [];
     //API URL beginning - Shouldn't Change
     const aerisApiBeginFixed = 'https://api.aerisapi.com';
     //API Credentials - Shouldn't Change
@@ -99,7 +100,7 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
                  })
                  .catch()
          })
-    }).done((res) => { console.log("DEBUG: HIT THE LAST THEN"); setTimeout(createImageResults,40000); setTimeout(getResults,50000)}).catch(function (error) {
+    }).done((res) => { setTimeout(createImageResults,40000); setTimeout(getResults,50000)}).catch(function (error) {
         //console.log(error);
 
     });
