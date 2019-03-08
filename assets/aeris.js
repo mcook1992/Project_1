@@ -58,8 +58,9 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
         //console.log(response.response[0].ob.tempF);
         //console.log(response)
         const cities = sortResults(response, maxTemp);
-         cities.forEach(({City: cityName, Temp: temp}) => {
-             const airportRequestURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/?query=" + cityName.replace(" ", "+");
+        console.log(cities);
+         cities.forEach(({City: cityName, Temp: temp, Country: country}) => {
+             const airportRequestURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/"+country+"/USD/en-US/?query=" + cityName.replace(" ", "+");
              skyScanner.get(airportRequestURI)
                  .then((res) => {
                      if(res.data.Places[0].PlaceId !== undefined) {
