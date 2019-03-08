@@ -83,6 +83,7 @@ $('#searchBtn').on("click", function(evt) {
 
     var userInput = parseInt($("#temp").val());
     //Taking the value of the User Selection and parsing it into an Int
+    var departureCity = $("#origin").val();
     console.log(userInput);
     //Setting Min Max For each Category
     if (userInput === 1) {
@@ -105,18 +106,18 @@ $('#searchBtn').on("click", function(evt) {
     switch (userInput) {
 
         case 1:
-            aerisAPIRequest(26.67, -1, maxTemp);
+            aerisAPIRequest(26.67, -1, maxTemp, departureCity);
             break;
         case 2:
-            aerisAPIRequest(21, 9, maxTemp);
+            aerisAPIRequest(21, 9, maxTemp, departureCity);
             break;
         case 3:
-            aerisAPIRequest(12.78, 999, maxTemp);
+            aerisAPIRequest(12.78, 999, maxTemp, departureCity);
             break;
         case 4:
-            aerisAPIRequest(-1.1, 999, maxTemp);
+            aerisAPIRequest(-1.1, 999, maxTemp, departureCity);
         case 5:
-            aerisAPIRequest(-12.22, 999, maxTemp);
+            aerisAPIRequest(-12.22, 999, maxTemp, departureCity);
 
     }
 
