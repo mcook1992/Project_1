@@ -1,44 +1,17 @@
-/**
- * Different enpoints that were tested
- */
-
-/** Enpoint Observation Returning temp closests to Zip 10027 and sorting temp on response*/
-//const endPoint = '/observations/closest?p=10027&search?query=sort=temp:&limit=25' + '&';
-
-// const endPoint = '/observations/search?query=sort=temp:-1&limit=25' + '&';
-
-//const endPoint = '/observations/search?query=country:us&sort=temp:-1&limit=25&';
-
-//const endPoint = '/normals/search?query=tavg:75&sort=temp:-1&limit=25&';
-
-// const endPoint = '/observations/within?p=10027&query=temp:21.1&radius=3000mi&limit=100&';
-
-// const endPoint = '/observations/search?query=temp:21.1&sort=temp:-1&limit=250&';
-
-//const endPoint = '/observations/search?query=temp:42.76&limit=250&';
-
-//const queryUrl = 'https://api.aerisapi.com/normals/closest?p=:auto&radius=100000miles&limit=100000&client_id=bvpLuTRRLs5tMbTcMqmhm&client_secret=0Bpm48kezpufXqLX6UzBvpBSfkGG4zOH6b6CuUwj';
-
-//Initilaizing Global Array Var of Places
-var arrayOfPlaces = [];
-
-
-const skyScanner = axios.create({
-    headers: {
-        get: {
-            "X-RapidAPI-Key": "32546dec3amsh296808ab8e0c6f4p1dd857jsn160dd89c68ad"
-        }
-    }
-});
-
-
 /********
- *Aeris API Request Function is a reusable Ajax call to Aeris API
+ *Aeris API Request Function returns a list of citys, temp and cheap flights.
  *@params tempParam is looking for a temperature (in Celsius) and will add it into the query to be sent to Aeris.
+ * @params sortParam will allow us to return a sorted array from Aeris
+ * @params maxTemp is used to remove places that are hotter than temp tange
+ * @params is the departure city
  */
-
 function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
+
+    //Clearing array on every request
     arrayOfPlaces = [];
+
+
+    <!--BUILDING AERIS URL REQUEST -->
     //API URL beginning - Shouldn't Change
     const aerisApiBeginFixed = 'https://api.aerisapi.com';
     //API Credentials - Shouldn't Change
@@ -50,15 +23,16 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
     //Building the full query
     const queryUrl = aerisApiBeginFixed + endPoint + apiCredentials;
 
-    //Begin Ajax request using jQuery
+
+
+    //Begin Ajax request
     $.ajax({
         url: queryUrl,
         method: "GET"
     }).then(function (response) {
-        //console.log(response.response[0].ob.tempF);
-        //console.log(response)
+
         const cities = sortResults(response, maxTemp);
-        console.log(cities);
+        
          cities.forEach(({City: cityName, Temp: temp, Country: country}) => {
              const airportRequestURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/"+country+"/USD/en-US/?query=" + cityName.replace(" ", "+");
              skyScanner.get(airportRequestURI)
@@ -68,7 +42,7 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
                          const cheapestFlightsURI = `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${OriginID}/`+ destinationAirportID + "/2019-10-01?inboundpartialdate=2019-11-01"
                          skyScanner.get(cheapestFlightsURI)
                              .then(res => {
-                                 //console.log(res);
+
                                  const {Places: places, Quotes: quotes} = res.data;
 
                                  places.length > 1 && quotes.length > 0 ? console.log(`FLIGHT: ${places[1].IataCode} to ${places[0].IataCode} @ $${quotes[0].MinPrice} on ${quotes[0].QuoteDateTime}`) : null;
@@ -102,11 +76,17 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
                  .catch()
          })
     }).done((res) => { setTimeout(createImageResults,40000); setTimeout(getResults,50000)}).catch(function (error) {
-        //console.log(error);
+
 
     });
 }
 
+/**
+ * Sorts and removes temps
+ * @param result
+ * @param maxTemp
+ * @returns {Array}
+ */
 function sortResults (result, maxTemp){
 var counter = 0;
 arrayOfPlaces = [];
@@ -139,13 +119,12 @@ arrayOfPlaces = [];
 
      }
 
-        //result.response[i].ob.tempC
-        //look at temp ...if greater than max move on else less store in array
+
 
     }
     return arrayOfPlaces;
-    // closestAirportByArray(arrayOfPlaces);
+
 
 }
 
-//Teddy needs country and city
+
