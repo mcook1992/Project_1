@@ -115,7 +115,7 @@ $('#searchBtn').on("click", function(evt) {
             break;
         case 2:
             $("#searchResults").empty();
-
+            imageResults = [];
             aerisAPIRequest(21, 9, maxTemp, departureCity);
             break;
         case 3:
