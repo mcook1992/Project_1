@@ -75,7 +75,9 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
 
                                  if(places.length > 1 && quotes.length > 0) {
                                      var createDisplayObject;
-                                     if(places[0].IataCode === $("#origin").val()) {
+                                     if(places[0].IataCode === "JFK" ||
+                    places[0].IataCode === "LGA" ||
+                    places[0].IataCode === "EWR") {
                                          createDisplayObject = {
                                              cityName: places[1].CityName,
                                              price: "$" + quotes[0].MinPrice,
