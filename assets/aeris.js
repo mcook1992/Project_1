@@ -58,7 +58,6 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
         //console.log(response)
         const cities = sortResults(response, maxTemp);
          cities.forEach(({City: cityName, Temp: temp}) => {
-             console.log(temp);
              const airportRequestURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/?query=" + cityName.replace(" ", "+");
              skyScanner.get(airportRequestURI)
                  .then((res) => {
