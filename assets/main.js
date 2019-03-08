@@ -30,7 +30,6 @@ function createImageResults() {
 }
 //displays results: runs through 4 arrays for city, image, temp, price, to create results blocks
 function getResults() {
-    console.log("DEBUG: INSIDE GETRESULTS FUNCTION FROM CALLBACK");
 
   for (var i = 0; i < cityResults.length; i++) {
     var resultsDiv = $("<div class='col-lg-4 col-md-6 results-container'>");

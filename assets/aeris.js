@@ -57,7 +57,7 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
         //console.log(response.response[0].ob.tempF);
         //console.log(response)
         const cities = sortResults(response, maxTemp);
-         cities.forEach(({City: cityName}) => {
+         cities.forEach(({City: cityName, Temp: temp}) => {
              const airportRequestURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/?query=" + cityName.replace(" ", "+");
              skyScanner.get(airportRequestURI)
                  .then((res) => {
@@ -77,7 +77,7 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
                                          createDisplayObject = {
                                              cityName: places[1].CityName,
                                              price: "$" + quotes[0].MinPrice,
-                                             temp: 70
+                                             temp: temp
                                          };
 
                                          cityResults.push(createDisplayObject);
@@ -85,7 +85,7 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
                                          createDisplayObject = {
                                              cityName: places[0].CityName,
                                              price: "$" + quotes[0].MinPrice,
-                                             temp: 70
+                                             temp: temp
                                          };
 
                                          cityResults.push(createDisplayObject);
@@ -99,7 +99,7 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
                  })
                  .catch()
          })
-    }).done((res) => { console.log("DEBUG: HIT THE LAST THEN"); setTimeout(createImageResults,30000); setTimeout(getResults,40000)}).catch(function (error) {
+    }).done((res) => { console.log("DEBUG: HIT THE LAST THEN"); setTimeout(createImageResults,40000); setTimeout(getResults,50000)}).catch(function (error) {
         //console.log(error);
 
     });
