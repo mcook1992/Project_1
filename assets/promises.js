@@ -16,7 +16,7 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp) {
     const apiCredentials = 'client_id=bvpLuTRRLs5tMbTcMqmhm&client_secret=0Bpm48kezpufXqLX6UzBvpBSfkGG4zOH6b6CuUwj';
 
     //Params part of the API Query
-    const endPoint = '/observations/search?query=temp:'+ tempParam + '&sort=temp:'+ sortParam + '&limit=250&';
+    const endPoint = '/observations/search?query=temp:'+ tempParam + '&sort=temp:'+ sortParam + '&limit=50&';
 
     //Building the full query
     const queryUrl = aerisApiBeginFixed + endPoint + apiCredentials;
@@ -30,9 +30,9 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp) {
 
 
         const cities = await sortResults(data, maxTemp);
-        console.log(cities);
+        console.log("DEBUG CITIES",cities);
 
-        await getSkyscannerPromises(cities);
+        getSkyscannerPromises(cities);
 
 
     };
@@ -103,7 +103,7 @@ function sortResults (result, maxTemp) {
     arrayOfPlaces = [];
     for (var i = 0; i < result.response.length; i++) {
 
-        if (counter < 250) {
+        if (counter < 50) {
             if (result.response[i].ob.tempC < maxTemp) {
                 var newPlacesObject = {
                     id: i,
@@ -139,35 +139,41 @@ function sortResults (result, maxTemp) {
 }
 
 async function getSkyscannerPromises (cities) {
+    console.log("DEBUG: INSIDE SKYSCANNER PROMISES");
         for (var i = 0; i < cities.length; i++) {
             const airportRequestURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=" + cities[i].City.replace(" ", "+");
-            skyScanner.get(airportRequestURI).then(res=>{
+            await skyScanner.get(airportRequestURI).then(res=>{
+
+                if (res.data.Places  || res !== undefined)
+            {
+                const destinationAirportID = res.data.Places[0].PlaceId;
+
+                if(destinationAirportID !== undefined){
+                    //console.log(destinationAirportID);
+                const cheapestFlightsURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/JFK-sky/" + destinationAirportID + "/2019-03-28?inboundpartialdate=2019-04-15'"
+
+                skyScanner.get(cheapestFlightsURI).then(res => {
+
                 const {Places: places, Quotes: quotes} = res.data;
-                if(places.length > 1 && quotes.length > 0) {
-                var createDisplayObject;
-                if(places[0].IataCode === "JFK") {
-                    createDisplayObject = {
-                        cityName: places[1].CityName,
-                        price: "$" + quotes[0].MinPrice,
-                        temp: 70
-                    };
+                places.length > 1 && quotes.length > 0 ? console.log(`FLIGHT: ${places[1].IataCode} to ${places[0].IataCode} @ $${quotes[0].MinPrice} on ${quotes[0].QuoteDateTime}`) : null;
 
-                    cityResults.push(createDisplayObject);
-                }else{
-                    createDisplayObject = {
-                        cityName: places[0].CityName,
-                        price: "$" + quotes[0].MinPrice,
-                        temp: 70
-                    };
-
-                    cityResults.push(createDisplayObject);
-                }
+            }).
+                catch(error => {}
+            )
+                ;
             }}
-                ).catch();
+
+            }
+
+            ).catch(function(rej, res){
+
+            });
+
             //promisesData.push(airportRequestURI);
 
-        }
-        console.log(promisesData);
+
+
+        };
 
     }
 
