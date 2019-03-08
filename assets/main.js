@@ -29,15 +29,10 @@ function createImageResults() {
         cityName: imageData
       };
 
-      imageResults.push(imageResultObject);
+      imageResults[i] = imageResultObject;
     });
   }
-
-  imageResults.sort(function(a, b) {
-    return a[indexValue] - b[indexValue];
-  });
-
-  console.log(typeof imageResults);
+  console.log(imageResults);
 }
 
 //displays results: runs through 4 arrays for city, image, temp, price, to create results blocks
@@ -48,8 +43,8 @@ function getResults() {
     var resultsDiv = $("<div class='col-lg-4 col-md-6 results-container'>");
 
     var resultImage = $("<img class='resultImage'/>");
-    resultImage.attr("src", imageResults[i]);
-    resultImage.attr("alt", cityResults[i].cityName);
+    resultImage.attr("src", imageResults[i].cityImageUrl);
+    resultImage.attr("alt", imageResults[i].cityName);
 
     var resultCity = $("<p id='resultsLocation'>").text(
       cityResults[i].cityName
