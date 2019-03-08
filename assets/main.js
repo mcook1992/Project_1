@@ -1,15 +1,19 @@
 "use strict";
 
-var departureCity = $("#origin").val();
-var userTempSelect = $("#temp").val();
+<!-- Declaring Global Variables -->
 
+var departureCity = $("#origin").val(); //Stores departure city chosen
+var arrayOfPlaces = []; //Stores an array of places, temp, city, countrys
+const skyScanner = axios.create({
+    headers: {
+        get: {
+            "X-RapidAPI-Key": "32546dec3amsh296808ab8e0c6f4p1dd857jsn160dd89c68ad"
+        }
+    }
+});
+let cityResults = []; //Returns Citys based on Temp
+let imageResults = []; //Returns images based on city
 
-//unsplash image results API and URLs
-//let cityResults = ["London", "New York", "Paris", "San Juan", "Honolulu"];
-let cityResults = [];
-let imageResults = [];
-// Generic function for capturing the tag name from the data-attribute
-//createImageResults();
 
 function createImageResults() {
   //for loop to get array of flyTags into data
@@ -83,7 +87,7 @@ $('#searchBtn').on("click", function(evt) {
     var userInput = parseInt($("#temp").val());
     //Taking the value of the User Selection and parsing it into an Int
     var departureCity = $("#origin").val();
-    console.log(userInput);
+
     //Setting Min Max For each Category
     if (userInput === 1) {
         maxTemp = 35;
@@ -107,13 +111,11 @@ $('#searchBtn').on("click", function(evt) {
         case 1:
             $("#searchResults").empty();
             imageResults = [];
-            console.log(imageResults);
             aerisAPIRequest(26.67, -1, maxTemp, departureCity);
             break;
         case 2:
             $("#searchResults").empty();
-            imageResults = [];
-            console.log(imageResults);
+
             aerisAPIRequest(21, 9, maxTemp, departureCity);
             break;
         case 3:
@@ -139,13 +141,7 @@ $('#searchBtn').on("click", function(evt) {
 $("#searchBtn").on("click", function(event) {
   event.preventDefault();
   departureCity = $("#origin").val();
-  console.log(departureCity);
 
-  //USE THIS CODE FOR WHEN WE CAN'T GET A RESULT
-  //   var newDiv = $("<div>");
-  //   var varText = $("<p>").text("We could not find any results");
-  //   newDiv.append(varText);
-  //   $("#searchResults").prepend(newDiv);
 });
 
 //Hot = 80-95
@@ -154,4 +150,3 @@ $("#searchBtn").on("click", function(event) {
 //cold = 30-35
 //Freezing = 10-18
 
-//TODO; Sort data and exclude items Display on frontend
