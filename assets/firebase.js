@@ -47,8 +47,8 @@ function populatePreviousFavoriteElements() {
     var resultImage = $("<img>").attr("src", sampleArray[x].imageURL);
     resultImage.attr("class", "favoriteImage");
     var resultCity = sampleArray[x].cityName;
-    var resultTemp = sampleArray[x].temperature;
-    var resultFlight = sampleArray[x].flightPrice;
+    var resultTemp = "<br>" + sampleArray[x].temperature;
+    var resultFlight = "<br>$" + sampleArray[x].flightPrice;
 
     favoritesDiv.append(resultImage);
 
