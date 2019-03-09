@@ -1,17 +1,3 @@
-
-
-//Initilaizing Global Array Var of Places
-var arrayOfPlaces = [];
-
-const skyScanner = axios.create({
-  headers: {
-    get: {
-      "X-RapidAPI-Key": "32546dec3amsh296808ab8e0c6f4p1dd857jsn160dd89c68ad"
-    }
-  }
-});
-
-
 /********
  *Aeris API Request Function returns a list of citys, temp and cheap flights.
  *@params tempParam is looking for a temperature (in Celsius) and will add it into the query to be sent to Aeris.
@@ -140,14 +126,7 @@ arrayOfPlaces = [];
 
     }
     return arrayOfPlaces;
-
-
-
-    //result.response[i].ob.tempC
-    //look at temp ...if greater than max move on else less store in array
   }
-  return arrayOfPlaces;
-  // closestAirportByArray(arrayOfPlaces);
-}
+
 
 
