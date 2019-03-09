@@ -1,7 +1,7 @@
 body {
   font-family: "Gothic A1", sans-serif;
   color: black;
-  font-size: 18px;
+  font-size: 16px;
   text-transform: uppercase;
 }
 
@@ -168,23 +168,10 @@ body {
 #favoriteDestinations {
   padding-left: 10px;
 }
-
-.moreButton {
-  text-align: center;
-  width: 100%;
-  float: none;
-}
-
-.para {
-  margin: auto;
-}
-
-#seeMore {
-  border: none;
-  background: rgb(104, 104, 104);
-  color: white;
-  border-radius: 0px;
-  padding: 10px;
+.favoritesContainer {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: rgb(104, 104, 104);
 }
 
 .favoriteBTN {
