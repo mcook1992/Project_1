@@ -66,8 +66,8 @@ function getResults() {
     var favoriteButton = $("<button class='favoriteButton'>");
     favoriteButton.text("Favorite");
     favoriteButton.attr("resultCity", resultCity.text());
-    favoriteButton.attr("resultTemp", "70");
-    favoriteButton.attr("resultFlight", "250");
+    favoriteButton.attr("resultTemp", cityResults[i].temp);
+    favoriteButton.attr("resultFlight", cityResults[i].price);
     favoriteButton.attr("imageURL", imageResults[i].cityImageUrl);
     favoriteButton.attr("class", "btn btn-default favoriteBTN");
 
