@@ -5,6 +5,7 @@
  * @params maxTemp is used to remove places that are hotter than temp tange
  * @params is the departure city
  */
+
 function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
 
     //Clearing array on every request
@@ -89,6 +90,7 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
  * @param maxTemp
  * @returns {Array}
  */
+
 function sortResults (result, maxTemp){
 console.log(result.response.length);
 var counter = 0;
@@ -123,11 +125,7 @@ arrayOfPlaces = [];
      }
 
 
-
     }
     return arrayOfPlaces;
-
-
 }
-
 
