@@ -110,6 +110,7 @@ $("#signUpSubmit").on("click", function(event) {
 
         // ...
       });
+    $("#signUpForm").attr("class", "d-none");
   } else {
     console.log(
       "Please enter a valid email email and password using the instructions given"
