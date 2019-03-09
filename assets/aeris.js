@@ -143,11 +143,7 @@ arrayOfPlaces = [];
 
 
 
-    //result.response[i].ob.tempC
-    //look at temp ...if greater than max move on else less store in array
   }
-  return arrayOfPlaces;
-  // closestAirportByArray(arrayOfPlaces);
-}
+
 
 
