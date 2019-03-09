@@ -90,43 +90,40 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
  * @param maxTemp
  * @returns {Array}
  */
-function sortResults (result, maxTemp){
-var counter = 0;
-arrayOfPlaces = [];
-    for(var i = 0; i<result.response.length; i++){
+function sortResults (result, maxTemp) {
+    var counter = 0;
+    arrayOfPlaces = [];
+    for (var i = 0; i < result.response.length; i++) {
 
-     if (counter < 250){
-         if (result.response[i].ob.tempC < maxTemp) {
-             var newPlacesObject = {
-                 id: i,
-                 Temp: result.response[i].ob.tempF,
-                 City: result.response[i].place.name,
-                 Country: result.response[i].place.country
-             };
-             var index = newPlacesObject.City.indexOf("/");
-             if (index > 0){
-                 newPlacesObject.City = newPlacesObject.City.substring(0,index);
-             }
-             var parantStringTest = newPlacesObject.City.indexOf("(");
-             if(parantStringTest > 0){
-                 newPlacesObject.City = newPlacesObject.City.substring(0, parantStringTest);
-             }
-             var airportStringTest = newPlacesObject.City.indexOf("air");
-             if(airportStringTest >0){
-                 newPlacesObject.City = newPlacesObject.City.substring(0, airportStringTest);
-             }
-             arrayOfPlaces.push(newPlacesObject);
-             counter++;
+        if (counter < 250) {
+            if (result.response[i].ob.tempC < maxTemp) {
+                var newPlacesObject = {
+                    id: i,
+                    Temp: result.response[i].ob.tempF,
+                    City: result.response[i].place.name,
+                    Country: result.response[i].place.country
+                };
+                var index = newPlacesObject.City.indexOf("/");
+                if (index > 0) {
+                    newPlacesObject.City = newPlacesObject.City.substring(0, index);
+                }
+                var parantStringTest = newPlacesObject.City.indexOf("(");
+                if (parantStringTest > 0) {
+                    newPlacesObject.City = newPlacesObject.City.substring(0, parantStringTest);
+                }
+                var airportStringTest = newPlacesObject.City.indexOf("air");
+                if (airportStringTest > 0) {
+                    newPlacesObject.City = newPlacesObject.City.substring(0, airportStringTest);
+                }
+                arrayOfPlaces.push(newPlacesObject);
+                counter++;
 
-         }
+            }
 
-     }
-
+        }
 
 
     }
     return arrayOfPlaces;
-  }
-
-
+}
 
