@@ -189,7 +189,9 @@ $("#searchResults").on("click", ".favoriteBTN", function(event) {
 
   favoritesDiv.append(resultImage);
   favoritesDiv.append(resultCity);
+  favoritesDiv.append("<br>");
   favoritesDiv.append(resultTemp);
+  favoritesDiv.append("<br>");
   favoritesDiv.append(resultFlight);
 
   $("#favoriteDestinations").prepend(favoritesDiv);
