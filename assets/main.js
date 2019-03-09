@@ -71,7 +71,7 @@ function getResults() {
     favoriteButton.attr("resultCity", resultCity.text());
     favoriteButton.attr("resultTemp", "70");
     favoriteButton.attr("resultFlight", "250");
-    favoriteButton.attr("imageURL", imageResults[i]);
+    favoriteButton.attr("imageURL", imageResults[i].cityImageUrl);
     favoriteButton.attr("class", "btn btn-default favoriteBTN");
 
     resultsDiv.append(favoriteButton);
