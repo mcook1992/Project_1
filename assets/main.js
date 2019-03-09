@@ -81,6 +81,26 @@ function getResults() {
 }
 $("#searchBtn").on("click", function(event) {
   event.preventDefault();
+    
+     // // //on button press extra actions -Teddy
+  // // //scroll down by 500 pixels on search button click...added smooth behavior for bonus points
+  // // window.scroll({
+  // //   top: 500,
+  // //   left: 0,
+  // //   behavior: "smooth"
+  // // });
+
+  // //button press shows loading gif until success
+
+  // $("#img").show(); //<----show gif
+  // $.ajax({
+  //   success: function(results) {
+  //     $("#img").hide(); //<--- hide again
+  //   }
+  //   //  )}
+  // });
+  // //-Teddy
+    
 });
 
 //this is related to the flight stuff
