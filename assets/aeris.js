@@ -19,7 +19,7 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
     const apiCredentials = 'client_id=bvpLuTRRLs5tMbTcMqmhm&client_secret=0Bpm48kezpufXqLX6UzBvpBSfkGG4zOH6b6CuUwj';
 
     //Params part of the API Query
-    const endPoint = '/observations/search?query=temp:'+ tempParam + '&sort=temp:'+ sortParam + '&limit=250&';
+    const endPoint = '/observations/search?query=temp:'+ tempParam + '&sort=temp:'+ sortParam + '&limit=100&';
 
     //Building the full query
     const queryUrl = aerisApiBeginFixed + endPoint + apiCredentials;
@@ -33,14 +33,14 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
     }).then(function (response) {
 
         const cities = sortResults(response, maxTemp);
-        
+            console.log(cities);
          cities.forEach(({City: cityName, Temp: temp, Country: country}) => {
              const airportRequestURI = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/"+country+"/USD/en-US/?query=" + cityName.replace(" ", "+");
              skyScanner.get(airportRequestURI)
                  .then((res) => {
                      if(res.data.Places[0].PlaceId !== undefined) {
                          const destinationAirportID = res.data.Places[0].PlaceId;
-                         const cheapestFlightsURI = `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${OriginID}/`+ destinationAirportID + "/2019-10-01?inboundpartialdate=2019-11-01"
+                         const cheapestFlightsURI = `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${OriginID}/`+ destinationAirportID + "/2019-04-10?inboundpartialdate=2019-04-18"
                          skyScanner.get(cheapestFlightsURI)
                              .then(res => {
 
@@ -76,9 +76,9 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
                              })
                      }
                  })
-                 .catch()
+                 .catch(err => {})
          })
-    }).done((res) => { setTimeout(createImageResults,40000); setTimeout(getResults,50000)}).catch(function (error) {
+    }).done((res) => { setTimeout(createImageResults,12000); setTimeout(getResults,14000)}).catch(function (error) {
 
 
     });
@@ -90,37 +90,39 @@ function aerisAPIRequest (tempParam, sortParam, maxTemp, OriginID) {
  * @param maxTemp
  * @returns {Array}
  */
-function sortResults (result, maxTemp) {
-    var counter = 0;
-    arrayOfPlaces = [];
-    for (var i = 0; i < result.response.length; i++) {
 
-        if (counter < 250) {
-            if (result.response[i].ob.tempC < maxTemp) {
-                var newPlacesObject = {
-                    id: i,
-                    Temp: result.response[i].ob.tempF,
-                    City: result.response[i].place.name,
-                    Country: result.response[i].place.country
-                };
-                var index = newPlacesObject.City.indexOf("/");
-                if (index > 0) {
-                    newPlacesObject.City = newPlacesObject.City.substring(0, index);
-                }
-                var parantStringTest = newPlacesObject.City.indexOf("(");
-                if (parantStringTest > 0) {
-                    newPlacesObject.City = newPlacesObject.City.substring(0, parantStringTest);
-                }
-                var airportStringTest = newPlacesObject.City.indexOf("air");
-                if (airportStringTest > 0) {
-                    newPlacesObject.City = newPlacesObject.City.substring(0, airportStringTest);
-                }
-                arrayOfPlaces.push(newPlacesObject);
-                counter++;
+function sortResults (result, maxTemp){
+console.log(result.response.length);
+var counter = 0;
+arrayOfPlaces = [];
+    for(var i = 0; i<result.response.length; i++){
 
-            }
+     if (counter < 100){
+         if (result.response[i].ob.tempC < maxTemp) {
+             var newPlacesObject = {
+                 id: i,
+                 Temp: result.response[i].ob.tempF,
+                 City: result.response[i].place.name,
+                 Country: result.response[i].place.country
+             };
+             var index = newPlacesObject.City.indexOf("/");
+             if (index > 0){
+                 newPlacesObject.City = newPlacesObject.City.substring(0,index);
+             }
+             var parantStringTest = newPlacesObject.City.indexOf("(");
+             if(parantStringTest > 0){
+                 newPlacesObject.City = newPlacesObject.City.substring(0, parantStringTest);
+             }
+             var airportStringTest = newPlacesObject.City.indexOf("air");
+             if(airportStringTest >0){
+                 newPlacesObject.City = newPlacesObject.City.substring(0, airportStringTest);
+             }
+             arrayOfPlaces.push(newPlacesObject);
+             counter++;
 
-        }
+         }
+
+     }
 
 
     }
