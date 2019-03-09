@@ -1,13 +1,22 @@
 "use strict";
 
-var departureCity = $("#origin").val();
-var userTempSelect = $("#temp").val();
 
-//unsplash image results API and URLs
-let cityResults = [];
-let imageResults = [];
-// Generic function for capturing the tag name from the data-attribute
-//let imageResultsCity = [];
+
+<!-- Declaring Global Variables -->
+
+var departureCity = $("#origin").val(); //Stores departure city chosen
+var arrayOfPlaces = []; //Stores an array of places, temp, city, countrys
+const skyScanner = axios.create({
+    headers: {
+        get: {
+            "X-RapidAPI-Key": "32546dec3amsh296808ab8e0c6f4p1dd857jsn160dd89c68ad"
+        }
+    }
+});
+let cityResults = []; //Returns Cities based on Temp
+let imageResults = []; //Returns images based on city
+
+
 
 function createImageResults() {
   //for loop to get array of flyTags into data
@@ -37,7 +46,7 @@ function createImageResults() {
 
 //displays results: runs through 4 arrays for city, image, temp, price, to create results blocks
 function getResults() {
-  console.log("DEBUG: INSIDE GETRESULTS FUNCTION FROM CALLBACK");
+
 
   for (var i = 0; i < cityResults.length; i++) {
     var resultsDiv = $("<div class='col-lg-4 col-md-6 results-container'>");
@@ -80,44 +89,68 @@ var maxTemp = 0;
 
 //Listening for a dropdown option to be selected
 
-$("#searchBtn").on("click", function(evt) {
-  var userInput = parseInt($("#temp").val());
 
-  //Taking the value of the User Selection and parsing it into an Int
-  var departureCity = $("#origin").val();
-  console.log(userInput);
+$('#searchBtn').on("click", function(evt) {
 
-  //Setting Min Max For each Category
-  if (userInput === 1) {
-    maxTemp = 35;
-  }
-  if (userInput === 2) {
-    maxTemp = 23.8889;
-  }
-  if (userInput === 3) {
-    maxTemp = 18.3333;
-  }
-  if (userInput === 4) {
-    maxTemp = 1.67;
-  }
-  if (userInput === 5) {
-    maxTemp = -7.77778;
-  }
+    var userInput = parseInt($("#temp").val());
+    //Taking the value of the User Selection and parsing it into an Int
+    var departureCity = $("#origin").val();
 
-  //Selected value is passed as a parameter to a switch
-  switch (userInput) {
-    case 1:
-      aerisAPIRequest(26.67, -1, maxTemp, departureCity);
-      break;
-    case 2:
-      aerisAPIRequest(21, 9, maxTemp, departureCity);
-      break;
-    case 3:
-      aerisAPIRequest(12.78, 999, maxTemp, departureCity);
-      break;
-    case 4:
-      aerisAPIRequest(-1.1, 999, maxTemp, departureCity);
-    case 5:
-      aerisAPIRequest(-12.22, 999, maxTemp, departureCity);
-  }
+    //Setting Min Max For each Category
+    if (userInput === 1) {
+        maxTemp = 35;
+    }
+    if (userInput === 2) {
+        maxTemp = 23.8889;
+    }
+    if (userInput === 3) {
+        maxTemp = 18.3333;
+    }
+    if (userInput === 4) {
+        maxTemp = 1.67;
+    }
+    if (userInput === 5) {
+        maxTemp = -7.77778;
+    }
+
+    //Selected value is passed as a parameter to a switch
+    switch (userInput) {
+
+        case 1:
+            $("#searchResults").empty();
+            imageResults = [];
+            aerisAPIRequest(26.67, -1, maxTemp, departureCity);
+            break;
+        case 2:
+            $("#searchResults").empty();
+            imageResults = [];
+            aerisAPIRequest(21, 9, maxTemp, departureCity);
+            break;
+        case 3:
+            $("#searchResults").empty();
+            imageResults = [];
+            aerisAPIRequest(12.78, 999, maxTemp, departureCity);
+            break;
+        case 4:
+            $("#searchResults").empty();
+            imageResults = [];
+            aerisAPIRequest(-1.1, 999, maxTemp, departureCity);
+        case 5:
+            $("#searchResults").empty();
+            imageResults = [];
+            aerisAPIRequest(-12.22, 999, maxTemp, departureCity);
+
+    }
+
+})
+
+//confirm whether user actually typed a city
+
+$("#searchBtn").on("click", function(event) {
+  event.preventDefault();
+  departureCity = $("#origin").val();
+
 });
+
+
+

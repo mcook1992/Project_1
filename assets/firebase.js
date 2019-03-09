@@ -37,23 +37,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
-//load firebase info on page load
-
-specifcUserRef.once("value", function(snapshot) {
-  //   console.log(snapshot.val().users);
-
-  snapshot.forEach(function(userFavoriteInfo) {
-    var userFavoriteInfoVal = userFavoriteInfo.val();
-    sampleArray.push(userFavoriteInfoVal);
-  });
-
-  populatePreviousFavoriteElements();
-  // .then(function() {
-  //   for (var x = 0; x < sampleArray.length; x++) {
-  //     console.log(sampleArray[x].cityName);
-  //   }
-  // });
-});
+//
 
 //function that populates users past favorites on Firebase
 
