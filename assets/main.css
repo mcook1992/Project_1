@@ -137,6 +137,7 @@ body {
 .results-container {
   padding: 10px;
   display: inline-block;
+  text-align: center;
 }
 
 .resultImage {
@@ -180,6 +181,9 @@ body {
   color: white;
   text-align: center;
   margin: 5px;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 0px;
 }
 
 .favoriteImage {
